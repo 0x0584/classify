@@ -30,23 +30,30 @@ use feature q{say};		# this is fucking awesome!
 # #			     sub routines
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-my @main_args = undef;
-my $topics = "";
-my $dicts = "";
-my $quiet = undef;
-my $help = undef;
+my @main_args = ();		# array of passed files as aguments
+my @topics = ();		# array of topics
+my @dicts = ();		# array of ditionaries
+my @input = ();		# array of ditionaries
+my $quiet = "";		# no unnecessary output
+my $help = "";		# show a basic help
 
-sub handleoptions {
+sub handleargs {
      # Process options.
      if (@ARGV > 0) {
-	  GetOptions('quiet|q' => \$quiet, 'help|?'  => \$help,
-		     'dict=s'  => \$dicts, 'topic=s' => \$topics);
-	  @main_args = @ARGV;
+	  GetOptions('quiet|q' => \$quiet,
+		     'help|?'  => \$help,
+		     'dict|d=s{1,}'  => \@dicts,
+		     'topic|t=s{1,}' => \@topics,
+		     'input|i=s{1,}' => \@input
+		    );
+	  # in case of sending files without specifing -i or --input
+	  @main_args = (@input, @ARGV);
+
 	  unless ($quiet) {
-	       say "not super quiet";
-	       say "dicts:\t".$dicts;
-	       say "topics:\t".$topics;
-	       say "main args:@main_args";
+	       say "not super quiet $quiet";
+	       say "dicts:\t @dicts";
+	       say "topics:\t @topics";
+	       say "main args:\t @main_args";
 	       say "\t\t\t--------------";
 	  }
      } else {
@@ -73,16 +80,11 @@ sub countin {
 # count the number words in a document
 sub countwords {
      my $doc = $_[0];
-     my $count = 0;
-     my $ERR = -1;	       # return value in case there's an error
+     my $count = -1;
 
-     say "\nin doc:\t".$doc unless $quiet;
+     # say "\nin doc:\t".$doc unless $quiet;
 
-     # perl has a cool built-in feature of dealing with files
-     # -s: returns the files size in bytes.
-     return $ERR unless -s $doc;
-
-     open my $fin, '<', $doc or die $!;
+     open my $fin, '<', $doc or (print "'$doc'\t: ".$!."\n" and goto RET);
 
      while (<$fin>) {
 	  my ($line) = $_;	# local variable
@@ -99,7 +101,10 @@ sub countwords {
 
      say "are you sure that '$doc' is a text file?"
 	  unless $count > 0 || $quiet;
-     return $count;
+     # perl has a cool built-in feature of dealing with files
+     # -s: returns the files size in bytes.
+ RET:
+     return $count unless -s $doc;
 }
 
 
@@ -107,9 +112,11 @@ sub countwords {
 # #			      main stuff
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-handleoptions;			# get all the options
+handleargs;			# get all the args
 
 for my $i (@main_args) {
-     print "word count: ".countwords ($i)." word(s) in '".$i."'\n";
+     if(countwords($i) != -1) {
+	       print "'$i'\t: ".countwords($i)." word(s)\n"
+     }
 }
 
