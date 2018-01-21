@@ -1,0 +1,7 @@
+# this line is ignored
+# word and its synonymous
+# 
+no not-at-all
+bad not
+nothing worthless
+sick wrong

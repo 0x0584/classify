@@ -1,0 +1,9 @@
+# this line is ignored
+# word and its synonymous
+# 
+oracle microsoft apple
+database nosql bigdata big-data data rdbms dbms
+cloud server storage
+ecosystem IDE
+java csharp c# c-sharp jdk
+windows solution

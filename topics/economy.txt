@@ -1,0 +1,8 @@
+# this line is ignored
+# word and its synonymous
+# 
+money wealth
+company capital
+dollar euro dirham yen
+industry
+stork storks

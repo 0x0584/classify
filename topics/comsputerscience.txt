@@ -1,0 +1,7 @@
+# this line is ignored
+# word and its synonymous
+# 
+algorithm data-structure data structure
+file disk memory
+analysis complexity
+instruction step

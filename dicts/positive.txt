@@ -1,0 +1,9 @@
+# this line is ignored
+# word and its synonymous
+# 
+yes
+okey okay ok o.k.
+alright
+sure
+done
+good great wonderful amazing

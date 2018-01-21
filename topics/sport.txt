@@ -1,0 +1,11 @@
+# this line is ignored
+# word and its synonymous
+# 
+football soccer
+basketball
+judo
+kongfu kong-fu
+team
+coach trainer
+real madrid rma
+barca fcb
