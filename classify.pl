@@ -19,12 +19,14 @@ package classify;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # #			       pragmas
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
+# standard library
 use strict;
 use warnings;
 use diagnostics;
 use Getopt::Long;
 use feature q{say};		# this is fucking awesome!
+
+use topic;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # #			     sub routines
@@ -32,10 +34,14 @@ use feature q{say};		# this is fucking awesome!
 
 my @main_args = ();		# array of passed files as aguments
 my @topics = ();		# array of topics
-my @dicts = ();		# array of ditionaries
-my @input = ();		# array of ditionaries
-my $quiet = "";		# no unnecessary output
-my $help = "";		# show a basic help
+my @dicts = ();			# array of ditionaries
+my @input = ();			# array of ditionaries
+my $quiet = "";			# no unnecessary output
+my $help = "";			# show a basic help
+
+my $ERR_MSG = 'there was a problem while loading..';
+my $HELP_MSG = "usage: $0 foo.txt [OPTIONS..]\n".
+"\nOPTIONS:\n\t+ [-d=1..]\n\t+ [-t=1..]\n\t+ [-i=1..]\n";
 
 sub handleargs {
      # Process options.
@@ -46,7 +52,10 @@ sub handleargs {
 		     'topic|t=s{1,}' => \@topics,
 		     'input|i=s{1,}' => \@input
 		    );
-	  # in case of sending files without specifing -i or --input
+	  die ($HELP_MSG) if $help;
+
+	  # merging just in case of sending files without
+	  # specifing -i or --input
 	  @main_args = (@input, @ARGV);
 
 	  unless ($quiet) {
@@ -56,14 +65,14 @@ sub handleargs {
 	       say "main args:\t @main_args";
 	       say "\t\t\t--------------";
 	  }
-     } else {
+     }
+     else {
 	  die ('no document was specified!'."\n"
 	       .'use --help or -? for more information');
      }
 }
 
 
-my $ERR_MSG = 'there was a problem while loading..';
 
 # count the appearance of words in a particular document according
 # to a certain topic or dictionary.
@@ -87,7 +96,7 @@ sub countwords {
      open my $fin, '<', $doc or (print "'$doc'\t: ".$!."\n" and goto RET);
 
      while (<$fin>) {
-	  my ($line) = $_;	# local variable
+	  my ($line) = $_;		       # local variable
 	  unless ('#' eq substr $line, 0, 1) { # ignore comments
 	       chomp $line;
 	       foreach my $str (split /\s+/, $line) {
@@ -100,23 +109,54 @@ sub countwords {
      close $fin;
 
      say "are you sure that '$doc' is a text file?"
-	  unless $count > 0 || $quiet;
+     unless $count > 0 || $quiet;
      # perl has a cool built-in feature of dealing with files
      # -s: returns the files size in bytes.
  RET:
      return $count unless -s $doc;
 }
 
-
+# sub  {
+     
+# }
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # #			      main stuff
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 handleargs;			# get all the args
 
+# 0.0 number of words in the documents
 for my $i (@main_args) {
-     if(countwords($i) != -1) {
-	       print "'$i'\t: ".countwords($i)." word(s)\n"
+     if (countwords($i) != -1) {
+	  print "'$i'\t: ".countwords($i)." word(s)\n"
      }
 }
 
+
+# now, compute the coccurence of each word of a particular topic
+# and the whole document. indeed, something like the following:
+#
+# 0. compute word appearance:
+#
+# suppose that scalar(@doc) => 781
+# words {a_i, b_i, ..} are from dictionaries {0 .. i}
+#
+# example dictionary_0:
+#
+# word a_0: 70/781 (*)
+# word e_0: 68/781
+# word d_0: 63/781
+# word c_0: 51/781
+# word b_0: 43/781
+# ...
+# word n_0: m/781
+#
+# the `word a_0` from dictioanry_0 appear 0.09% in the whole document
+#
+# 1. after collecting the appearances, find the most likey one among
+# them. (for the moment, choose just one)
+#
+
+my $this = (
+     1,2,4,5,7,4,1,4,1
+    );
