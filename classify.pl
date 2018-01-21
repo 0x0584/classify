@@ -35,46 +35,18 @@ my $dicts;
 my @main_args;
 
 sub handleoptions () {
-     my $help = 0;		# handled locally
-     my $ident = 0;		# handled locally
-     my $man = 0;		# handled locally
-
      # Process options.
      if (@ARGV > 0) {
 	  GetOptions('verbose|v' => \$verbose, 'help|?'	 => \$help,
-		     'debug'	 => \$debug  , 'dict|d'	 => \$dicts,
-		     'topic|t'   => \$topics);
+		     'debug'	 => \$debug  , 'dict=s'	 => \$dicts,
+		     'topic=s'   => \$topics);
      }
 
-     print "hell yeah!" if ($verbose and $debug);
+     print "hell yeah!" if $verbose and $debug;
      print @main_args = @ARGV;
 }
 
 handleoptions();
-
-# list of repos
-# my @repos = (
-# 	     '/home/arfed/Workspace/doc-class/docs',
-# 	     '/home/arfed/Workspace/doc-class/results',
-# 	     '/home/arfed/Workspace/doc-class/dicts',
-# 	     '/home/arfed/Workspace/doc-class/topic'
-# 	    );
-
-# # topics
-# my @topic = (
-# 	     File::Spec->catfile($repos[3], 'philosophy.txt'),
-# 	     File::Spec->catfile($repos[3], 'sport.txt'),
-# 	     File::Spec->catfile($repos[3], 'economy.txt'),
-# 	     File::Spec->catfile($repos[3], 'IT.txt'),
-# 	     File::Spec->catfile($repos[3], 'computerscience.txt'),
-# 	    );
-
-# # dictionaries
-# my @dict = (
-# 	    my $positive = File::Spec->catfile($repos[2], 'positive.txt'),
-# 	    my $negative = File::Spec->catfile($repos[2], 'negative.txt'),
-# 	    my $advanced = File::Spec->catfile($repos[2], 'advanced.txt')
-# 	   );
 
 my $ERR_MSG = 'there was a problem while loading..';
 
@@ -93,6 +65,8 @@ sub count_ {
      my $doc = $_[0];
      my $count = 0;
      my $ERR = -1;
+
+     print "\n".$doc if $debug;
 
      # perl has a cool built-in feature of dealing with files
      # -s: returns the files size in bytes.
@@ -114,3 +88,5 @@ sub count_ {
 
      return $count;
 }
+
+print "\n", count_ $main_args[0];
