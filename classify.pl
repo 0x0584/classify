@@ -27,8 +27,7 @@ use Getopt::Long;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-my $verbose;
-my $debug;
+my $quiet = undef;
 my $help;
 my $topics;
 my $dicts;
@@ -37,13 +36,12 @@ my @main_args;
 sub handleoptions () {
      # Process options.
      if (@ARGV > 0) {
-	  GetOptions('verbose|v' => \$verbose, 'help|?'	 => \$help,
-		     'debug'	 => \$debug  , 'dict=s'	 => \$dicts,
-		     'topic=s'   => \$topics);
+	  GetOptions('quiet|q' => \$quiet, 'help|?'  => \$help,
+		     'dict=s'  => \$dicts, 'topic=s' => \$topics);
+	  @main_args = @ARGV;
+	  print "hell yeah!" unless $quiet;
+	  print @main_args unless $quiet;
      }
-
-     print "hell yeah!" if $verbose and $debug;
-     print @main_args = @ARGV;
 }
 
 handleoptions();
@@ -61,12 +59,12 @@ sub count_in {
 
 # ($login, $passwd) = split(/:/); very nice
 # count words in a document
-sub count_ {
+sub countwords {
      my $doc = $_[0];
      my $count = 0;
      my $ERR = -1;
 
-     print "\n".$doc if $debug;
+     print "\n".$doc unless $quiet;
 
      # perl has a cool built-in feature of dealing with files
      # -s: returns the files size in bytes.
@@ -89,4 +87,4 @@ sub count_ {
      return $count;
 }
 
-print "\n", count_ $main_args[0];
+print "\n", countwords $main_args[0];
