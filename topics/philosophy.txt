@@ -1,6 +1,4 @@
 # this line is ignored
-# word and its synonymous
-# 
 will duty
 kant emmanuel
 ethics
@@ -8,3 +6,6 @@ spinoza
 descartes
 god religion metaphysics metaphysical
 superman ubermensche neitszche
+good
+evil bad
+
