@@ -1,0 +1,206 @@
+Systématisation de la moelle épinière
+
+•	définition
+•	La systématisation est l'étude des circuits et des voies fonctionnelles. 
+•	A- SUBSTANCE GRISE ET SUBSTANCE BLANCHE 
+•	La substance blanche et la substance grise ont une organisation et des fonctions différentes.
+•	INTRODUCTION:
+•	On considère que pour la substance grise : 
+•	La région dorsale sensitive est constituée de trois parties :
+•	 l'apex (tête): reçoit une partie de la sensibilité extéroceptive (superficielle ou cutanéo-muqueuse), 
+•	l'isthme (col) :reçoit une partie de la sensibilité proprioceptive (profonde), 
+•	la base : reçoit la sensibilité intéroceptive (viscérale). 
+•	La région ventrale motrice est constituée de deux parties : 
+•	l'apex (ou tête): qui contient les neurones somato-moteurs qui se connectent avec les prolongements axonaux des cellules motrices du cortex cérébral. 
+•	La base :contient les neurones viscéro-moteurs 
+•	On distingue par ailleurs des voies ascendantes sensitives qui recueillent les informations en périphérie et les transmettent aux centres supérieurs (tronc cérébral, thalamus, cortex cérébral) et des voies descendantes motrices regroupées en une voie cortico-spinale pyramidale et les voies extrapyramidales qui l’accompagnent. Ces voies ascendantes et descendantes constituent la substance blanche de la moelle épinière. 
+•	1-La substance grise
+•	Centre nerveux, car, dans la substance grise, se déroulent des phénomènes réflexes.
+•	 Segmentaire, car la substance grise est formée d’éléments étagés qui correspondent à la subdivision métamérique de l’embryon. Chaque segment de moelle grise, appelé neuromère, donne naissance aux racines d’un nerf spinal. Ainsi sur toute la hauteur de la substance grise de la moelle, on peut reconnaître la naissance de 31 paires de nerfs spinaux
+•	a-la substance grise centre réflexe
+•	l’arc réflexe simple et le réflexe médullaire réel.
+•	C’est au niveau de la substance grise d’un neuromère que se réfléchit l’arc réflexe simple dont voici le cheminement.
+•	Une information sensitive périphérique (tact, douleur etc ...) est véhiculée par le nerf périphérique (ex. n. médian) puis par le nerf spinal (ancien n.rachidien). Il pénètre par la racine dorsale jusqu’à la substance grise médullaire. Par articulation monosynaptique (ou plurisynaptique, en raison de l’interposition d’un neurone intercalaire ou de plusieurs), l’influx nerveux aboutit à un motoneurone de la corne ventrale.
+•	L’influx nerveux moteur efférent chemine alors dans la racine ventrale, puis dans le nerf spinal (n.rachidien) jusqu’à la plaque motrice de la fibre musculaire qui réagit par contraction.
+•	Le réflexe myotatique (boucle gamma) est un exemple de réflexe mono - synaptique, assurant le réglage de la tonicité musculaire.
+•	Pour les autres réflexes, dans le fonctionnement de la moelle, chez l’homme, l’arc réflexe n’est jamais aussi simple. L’information sensitive diffuse sur plusieurs neuromères grâce à des cellules d’association verticale, et l’influx moteur peut partir d’un nombre encore plus grand de neuromères. Ce débordement de l’influx nerveux est en rapport direct avec l’intensité de la stimulation et sa diffusion est rendue possible par un très grand nombre de fibres d’association. Ces dernières sont disposées autour de la substance grise et constituent les voies proprio-spinales ou faisceau fondamental ou faisceau propre.
+•	b-La substance grise, centre de la motricité automatique.
+•	Cette modalité de fonctionnement est en fait une conséquence de la propriété physiologique précédente. Lorsque pour des raisons pathologiques (myélite transverse ou section de moelle) les relations nerveuses entre le cerveau et la moelle sont interrompues, le segment médullaire sous-jacent à la lésion devient le siège de phénomènes moteurs automatiques qui sont :
+•	*l’hypertonie musculaire 
+•	Elle résulte de l’interruption de la voie motrice principale ou voie pyramidale. Cette hypertonie ou contracture pyramidale, s’appelle SPASTICITE. Elle est provoquée par une majoration de l’activité gamma du réflexe myotatique. Elle est aussi responsable du clonus du pied ou de la rotule et de l’hyper-réflectivité tendineuse (Ex. paraplégie spasmodique en extension).
+•	*l’apparition de réflexes de retrait
+•	Ce sont des réflexes automatiques de défense dont la partie sensitive utilise la voie de la sensibilité superficielle (extéroceptive et nociceptive). Ce sont des réflexes cutanés. La partie motrice aboutit à des muscles provoquant le repli et le retrait des segments de membre. C’est le cas du réflexe cutané plantaire ou signe de BABINSKI. En cas de signe positif, le grattement du bord latéral de la plante du pied provoque l’élévation du gros orteil, associée parfois à une flexion complète du membre inférieur
+•	*La substance grise, centre de la régulation médullaire de la motricité
+•	La corne ventrale de la substance grise contient les corps cellulaires des motoneurones alpha (innervation des fibres musculaires phasiques), et des motoneurones gamma (innervation des fibres musculaires intra - fusoriales, pour régulation de l’activité tonique).
+•	Elle contient, en plus, un réseau de petits neurones intercalaires, à fonction inhibitrice (cellules de RENSHAW). Ces cellules assurent la régulation et la répartition des phénomènes toniques dans les muscles agonistes et antagonistes.
+•	Dans le mouvement normal, la force agoniste (ex. la flexion) s’accompagne d’un étirement de la musculature antagoniste. Il ne s’agit pas, ici, d’un simple étirement physique (comme un élastique), il s’agit d’une mise en tension régulée, progressivement et proportionnellement, par l’innervation récurrente de RENSHAW (mécanisme de l’innervation réciproque).
+•	Ainsi, l’articulation est mécaniquement située au centre d’un couple de forces opposées, régulées par le système nerveux moteur, assurant le contrôle de la précision du geste et l’équilibre des pressions intra - articulaires par coaptation étroite, cartilage contre cartilage
+•	Les cellules de Renshaw, elles, reçoivent une collatérale excitatrice d'un motoneurone alpha, avec lequel ils forment en retour une synapse glycinergique inhibitrice. Le motoneurone alpha s'autoinhibe donc par l'intermédiaire de sa cellule de Renshaw satellite. Cette cellule de Renshaw forme également des synapses avec les autres motoneurones du muscle, les motoneurones gamma des muscles synergistes, ainsi qu'avec d'autres neurones intermédiaires inhibiteurs des muscles antagonistes, qu'ils activent donc indirectement.
+•	Par leur différentes connexions, le rôle des cellules de Renshaw est la régulation de la contraction, permettant la transmission de faibles stimulations, mais limitant une activité excessive des motoneurones, qui pourrait entraîner des contractions convulsives.
+
+•	2-LA SUBSTANCE BLANCHE
+•	Elle est formée par les longs faisceaux nerveux verticaux, groupés autour de la substance grise dans les cordons médullaires, ventraux, latéraux et dorsaux.
+•	Les voies ascendantes (sensitives)
+•	Elles commencent au niveau de corpuscules sensitifs spécifiques situés dans la peau (sensibilité superficielle) ou situés dans les capsules articulaires (sensibilité profonde).
+•	L’examen du schéma montre qu’il existe plusieurs catégories (ou modalités) fonctionnelles de sensibilités. Chacune d’elle possède, à son origine des corpuscules spécifiques. Pour des raisons de terminologie fonctionnelle et clinique, il est commode de classer ces différentes sensibilités, en fonction de leur trajet dans le névraxe.
+•	Les unes montent dans les cordons dorsaux de la moelle, puis atteignent la moelle allongée du tronc cérébral, et se groupent pour former un tractus sensitif appelé LEMNISCUS (ruban de REIL). Ainsi, la sensibilité tactile épicritique, la sensibilité proprioceptive consciente, la baresthésie et la pallesthésie constituent le système des sensibilités lemniscales.
+•	Les autres montent dans le cordon latéral de la moelle (sensibilités tactile protopathique, thermique et algésique). Dans la moelle allongée elles sont situées en dehors du lemniscus. Elles constituent le système des sensibilités extra-lemniscales.
+•	Enfin, un dernier groupe de sensibilité se rapporte à la sensibilité proprioceptive inconsciente. Leur trajet va de la moelle épinière au cervelet. Elles sont appelées sensibilités spino-cérébelleuses.
+•	En bref, on voit qu’on peut regrouper les différents modes de sensibilités en trois catégories, en fonction de leur trajet dans le névraxe :
+•	* sensibilités lemniscales
+•	* sensibilités extra-lemniscales
+•	* sensibilités spino-cérébelleuses.
+•	a-organisation générale des voies sensitives
+•	le premier neurone ou protoneurone :
+•	Il fait suite à un corpuscule récepteur sensitif situé dans la peau, dans les muscles, dans les tendons, les capsules et les ligaments articulaires. Chaque type de sensibilité possède ses corpuscules spécifiques. Le protoneurone se situe dans les troncs nerveux périphériques, puis dans la racine dorsale du nerf spinal. Le corps cellulaire du neurone (qui est une cellule en T) est placé dans le ganglion spinal de la racine dorsale
+•	Le cylindraxe du protoneurone pénètre dans la moelle. Il s’articule alors avec le corps du deuxième neurone situé dans les noyaux sensitifs de la corne dorsale.
+•	suite
+•	le deuxième neurone ou deutoneurone :
+•	Il est situé entièrement dans le névraxe. C’est lui qui constitue les faisceaux sensitifs qui montent dans la moelle. Les faisceaux de deutoneurones sensitifs montent les uns vers le cervelet (voies spino-cérébelleuses), les autres vers les noyaux gris centraux du cerveau (voies lemniscales et extra-lemniscales). Le deutoneurone se termine dans des noyaux gris centraux dont le principal est le thalamus situé dans la partie profonde du cerveau (noyau latéro- ventral postérieur du thalamus).
+•	le troisième neurone ou neurone terminal :
+•	Il s’articule avec le précédent dans le thalamus et se termine dans l’écorce sensitive du cerveau. C’est le neurone de projection corticale.
+•	b-Organisation particulière des voies sensitives
+•	*Les sensibilités lemniscales:
+•	Les voies des sensibilités lemniscales transportent la sensibilité tactile épicritique, la sensibilité proprioceptive consciente, la baresthésie (sensibilité à la pression) et la pallesthésie (sensibilité ostéo-périostée vibratoire).
+•	*1-la sensibilité tactile épicritique (tactile fine ou discriminative) 
+•	possède ses propres corpuscules sensitifs spécifiques situés dans l’épiderme (disques de Merkel et terminaisons sensitives annexées aux poils). 
+•	Dans l’hypoderme se trouvent les corpuscules de Paccini et les corpuscules de Golgi-Mazzoni. 
+•	Ils enregistrent la sensibilité à la pression sur la peau (baresthésie).
+•	Elle donne l’information sur la localisation et la qualité de la sensation tactile. 
+•	L'organisation de cette sensibilité est différente des autres. Ce sont des fibres longues qui restent du même côté. 
+•	Le corps cellulaire du protoneurone se trouve dans le ganglion spinal de la racine postérieure du nerf rachidien qui possède ainsi deux prolongements : un prolongement périphérique et un prolongement central vers le SNC 
+•	Le prolongement central pénètre la moelle épinière, se dirige vers le cordon postérieur en restant en arrière de la zone marginale et de la corne dorsale. 
+•	La voie épicritique remonte d’un seul jet vers le tronc cérébral sans faire relais. Le relais avec le deuxième neurone se produit dans le tronc cérébral (moelle allongée). Il s’agit donc d’une voie « bulbopète ». 
+•	Ces fibres du premier neurone participent donc à la constitution du cordon postérieur de la SB de la moelle épinière. Celui-ci se divise en : 
+•	? faisceau gracile (faisceau de Goll) médian pour la sensibilité des régions sacrée, lombaire et thoracique, 
+•	? faisceau cunéiforme (faisceau de Burdach) plus externe pour la sensibilité de la région cervicale. 
+•	La sensibilité épicritique participe ainsi à la constitution du système cordonal postérieur. Il s'agit donc là d'une sensibilité directe, homolatérale. 
+•	Les fibres qui véhiculent cette information sont myélinisées et donc de gros calibre : ce sont les fibres A-ß. 
+•	Ces fibres A-ß ont une autre destination : la tête (lames II et III) de la corne dorsale pour moduler le passage des influx nociceptifs : c’est le « gate control »
+•	*2-la sensibilité proprioceptive consciente (kinesthésique)
+•	correspond aux corpuscules sensibles des ligaments et des capsules articulaires. 
+•	Ils renseignent les centres nerveux sur la tension de l’appareil ligamentaire et sur la position des segments de membres dans l’espace (sens articulaire ou sens des positions ou sensibilité profonde des cliniciens).
+•	suite
+•	Le premier neurone, protoneurone, suit une organisation identique à la sensibilité tactile épicritique. La sensibilité proprioceptive consciente constitue avec la sensibilité épicritique un contingent de fibres médial se destinant aux cordons postérieurs de la moelle épinière et constituant le système cordonal postérieur. 
+•	Le prolongement central du protoneurone passe dans le cordon postérieur pour participer à la formation des faisceaux gracile (Goll) et cunéiforme (Burdach), remonte directement dans la moelle allongée du tronc cérébral où s’effectue le relais avec le deuxième neurone (deutoneurone). 
+•	L’organisation somatotopique dans les cordons postérieurs est identique à celle de la sensibilité épicritique. Il s'agit donc aussi d'une sensibilité directe et homolatérale. 
+•	Les fibres qui véhiculent cette information sont myélinisées et de gros calibre : ce sont les fibres IA et IB. 
+•	Les sensibilités épicritique et proprioceptive consciente font leur premier relais dans le tronc cérébral : dans les noyaux gracile (Goll) et cunéiforme (Burdach) de la moelle allongée. Ils sont rejoins par la sensibilité de la face pour former ensemble le lemnisque médial. Ce lemnisque médial constituant le système lemniscal sensitif croise aussitôt la ligne médiane dans la moelle allongée et se termine dans le thalamus controlatéral 
+•	Cette sensibilité proprioceptive consciente sert au maintien de l'équilibre, au sens stéréognosique et fournit ainsi la notion de position des segments du corps donc des membres dans l'espace. 
+•	Les fibres IA et IB ont aussi au moins 2 autres destinations : 
+•	une destination reflexe : elles s’articulent par un interneurone avec les motoneurones a de la lame IX : c’est le support des arcs réflexes . 
+•	une destination récurrente : elles pénètrent l’isthme de la corne dorsale (les lames V et VI) pour exercer un effet modulateur sur le transfert du message nociceptif. 
+•	*3-la sensibilité vibratoire ou pallesthésie
+•	Ses corpuscules sont situés dans le périoste des os (exploration clinique par les vibrations du diapason).
+•	*sensibilités extra - lemniscales (ou voies spino - thalamiques)
+•	Dans la peau, les terminaisons nerveuses libres de la douleur locale sont le point de départ des sensations cutanées douloureuses et dans le derme les corpuscules de Krause et de Rruffini sont le point de départ des sensations thermiques (Krause : Froid et Ruffini : Chaud). Les corpuscules de Meissner, dans les papilles du derme, sont le point de départ d’une sensibilité tactile grossière approximative appelé tact protopathique.
+•	*1-La sensibilité thermique et douloureuse
+•	Les sensations nociceptives thermiques et douloureuses sont transmises à la moelle épinière par un protoneurone dont le corps cellulaire se trouve dans le ganglion spinal de la racine dorsale du nerf rachidien. Il s'agit d'une cellule en T avec un prolongement périphérique qui participe à la constitution des nerfs et un prolongement central vers le système nerveux central à partir du ganglion spinal. 
+•	Le prolongement central pénètre la moelle épinière au niveau de la zone marginale de Lissauer, puis fait relais avec un deuxième neurone ou deutoneurone. Le corps cellulaire de ce deuxième neurone est situé dans l'apex (ou tête ou lames I et II) de la corne dorsale. Ce deutoneurone émet un axone qui traverse la substance grise, croise la ligne médiane au niveau de la commissure blanche pour aller du côté opposé 
+
+•	Puis il chemine dans le cordon latéral et remonte verticalement dans la moelle épinière, le tronc cérébral, pour se terminer dans le thalamus en constituant le faisceau spino-thalamique latéral ou faisceau néo-spino-thalamique controlatéral ou faisceau en croissant de Déjerine. 
+•	Il s'agit donc d'une voie croisée qui véhicule la sensibilité thermo-algésique de l'hémicorps controlatéral. 
+•	Ces afférences nociceptives peuvent avoir d’autres destinations : 
+•	- les neurones moteurs pour des réflexes d’évitement ou de défense, 
+•	- la réticulée spinale (lames V et VI) et du tronc cérébral : ce sont les voies spino-réticulaire et paléo-spino-thalamique dont le rôle est de mettre en jeu l’éveil de l’organisme et des réactions somato-végétatives qui accompagnent généralement les stimuli nociceptifs : susrsaut, mimique, larmes, sanglots, réactions végétatives… 
+•	*2- La sensibilité protopathique tactile grossière : 
+•	Le prolongement central du protoneurone fait relais au niveau de l’apex de la corne postérieure de la moelle épinière avec un deutoneurone dont le prolongement croise la ligne médiane au niveau de la commissure blanche pour aller du côté opposé.
+•	Le regroupement de tous les axones véhiculant cette sensibilité constitue un faisceau dans la substance blanche de la moelle épinière qui remonte ensuite au tronc cérébral et au thalamus: c’est le tractus spino-thalamique ventral. 
+•	 - le faisceau spino-thalamique ventral (ou paléo-spino-thalamique)
+•	Il transporte la sensibilité protopathique dont l’excès de stimulation donne une sensation douloureuse profonde, confuse et imprécise s’accompagnant éventuellement de réactions végétatives (pâleur et nausées). Ce faisceau donne des rameaux collatéraux à la substance réticulée du tronc cérébral.
+•	le faisceau spino-thalamique dorsal (ou néo-spino-thalamique)
+•	Il transporte les sensations thermiques et les sensations douloureuses, brèves et précises (douleur superficielle).
+Ces faisceaux montent dans le cordon latéral de la moelle épinière puis dans le tronc cérébral pour atteindre le thalamus. Une partie seulement des fibres gagne directement le thalamus, le reste aboutissant par de nombreuses collatérales à la substance réticulée du tronc cérébral (faisceau spino - réticulo - thalamique). Cette dernière voie est impliquée dans la transmission de la douleur.
+•	*des sensibilités spino-cérébelleuses
+•	Ces voies transportent vers le cervelet les sensibilités proprioceptives inconscientes c’est à dire la sensibilité à la tension des muscles et des tendons musculaires.
+•	Les petits organes sensitifs de la tension des muscles sont situés dans le corps musculaire. Ce sont les fuseaux neuro-musculaires. Répartis au sein des fibres musculaires squelettiques, ce sont, en fait, des capteurs de tension, qui se comportent comme un dynamomètre
+•	Ces proto-neurones montent dans les nerfs périphériques, et dans la racine dorsale des nerfs spinaux. Leur corps cellulaire est dans le ganglion spinal. Les cylindraxes pénètrent dans la moelle épinière et se terminent dans les deux noyaux du col de la corne dorsale, les uns dans le noyau de Clarke, les autres dans le noyau de Betcherew.
+
+•	Faisceau spino-cérébelleux direct :
+•	Les deutoneurones, qui naissent du noyau de Clarke, gagnent le cordon latéral du même côté, pour former le faisceau spino-cérébelleux direct (anciennement F. de Fleichsig). 
+•	Il monte tout au long de la moelle et du tronc cérébral, vers le cervelet (pédoncule cérébelleux inférieur). 
+•	Il transporte la sensibilité proprioceptive inconsciente des membres inférieurs et du tronc.
+•	Faisceau spino-cérébelleux croisé 
+•	Les deutoneurones qui naissent du noyau de Betcherew croisent la ligne médiane dans la commissure grise postérieure et montent dans la moelle en formant le faisceau spino-cérébelleux croisé (anciennement F. de Gowers).
+•	 Il monte dans la moelle épinière, vers le cervelet (pédoncule cérébelleux supérieur).
+•	 Il transporte la sensibilité proprioceptive inconsciente du membre supérieur. De ce fait, le faisceau n’est présent que dans le segment cervical de la moelle.
+•	La lamination de la substance grise selon Rexed 
+Lame I : zone marginale de Lissauer 
+•	- Lame II et III : substance gélatineuse de Rolando, apex de la corne dorsale 
+•	- Lames IV et V : isthme de la corne dorsale, noyaux réticulaires pour la lame V 
+•	- Lame VI : neurones d’association médullaire, base de la corne dorsale 
+•	- Lame VII : noyaux végétatifs, colonne thoracique de Clarke, corne latérale, interneurones, motoneurones ? 
+•	- Lame VIII : terminaison des voies extrapyramidales 
+•	- Lame IX : centres moteurs de la corne ventrale, motoneurones a 
+•	- Lame X : zone centrale périépendymaire 
+•	L’ensemble : lames IV, V et VI est aussi appelé noyau propre. 
+
+•	Déductions physiologiques : 
+•	1) La sémiologie de la sensibilité comprend des troubles sensitifs subjectifs et des troubles sensitifs objectifs : 
+•	Les troubles sensitifs subjectifs : il s’agit des douleurs et des paresthésies. Les paresthésies sont des sensations anormales non douloureuses comme des fourmillements, des picotements, des sensations de peau cartonnée ou impression de marcher sur du caoutchouc... 
+•	Les troubles sensitifs objectifs : 
+l’anesthésie est l’abolition d’un ou de plusieurs types de sensibilité (analgésie pour l’abolition de la douleur) et l’hypoesthésie en est la diminution. Elles peuvent être totales (toutes les sensibilités) ou dissociées (seulement certaines à l’exclusion des autres). 
+•	L’hyperesthésie et l’hyperalgésie traduisent l’exagération de la sensibilité. 
+•	L’hyperpathie est la transformation d’une sensation tactile normalement indolore en sensation douloureuse. L’allodynie est alors la douleur consécutive à la transformation de cette sensation. 
+•	Les dysesthésies regroupent toutes les modifications de la perception autres que l’anesthésie ou l’hyperesthésie : retard dans la perception, erreurs, épuisement… 
+•	On distingue au final 2 modes de sensibilité extéroceptive : 
+•	un mode précis, fin et délicat, épicritique qui apporte la notion spatiale et discriminative des impressions tactiles. Les fibres A-ß de ce système sont fortement myélinisées et ne font pas de relais dans la moelle épinière. La diffusion des influx y est donc rapide, spécifique et non parasitée. 
+•	un mode diffus, non différencié, protopathique et nociceptif qui apporte des informations sur la douleur, les températures extrêmes et les divers dangers perçus au niveau de la peau. Les fibres de ce système sont peu ou pas myélinisées et se terminent dans la zone marginale et la substance gélatineuse qui jouent vis-à-vis d’elles un rôle de filtre. La vitesse des influx y est plus lente que pour la sensibilité épicritique et diffuse largement par des collatérales. Le traitement du message protopathique est soumis à une influence modulatrice et le passage de l’influx dépend de la sommation d’actions facilitatrices et inhibitrices. 
+
+•	Les influences inhibitrices sont : 
+•	soit d’origine descendante cérébrale et réticulaire (elles expliquent par exemple le rôle du stress dans la perception du message douloureux), 
+•	 soit locales : les influx épicritiques du même métamère véhiculés par des fibres A-ß à vitesse de conduction plus rapide bloquent le passage de l’influx : c’est le « système de la porte » ou « gate control ».
+•	 Si le stimulus nociceptif est intense ou prolongé, il déborde les capacités inhibitrices du système modulateur et le message est transmis (sensation douloureuse intense et prolongée). Les fibres Ad et C ouvrent donc la porte et les fibres A-ß la ferment 
+•	Sur cette base physiologique, on peut comprendre qu’il existe plusieurs mécanismes aux douleurs chroniques : 
+•	soit par excès d’afférences nociceptives (hypernociception) comme dans les cancers en évolution ou les inflammations chroniques, 
+•	soit par défaillance des systèmes modulateurs : il existe alors une lésion du système nerveux central ou périphérique (hyperactivité de désafférentation) : la douleur est dite neuropathique. 
+•	La neurostimulation
+•	elle consiste en une stimulation électrique de faible intensité et de fréquence élevée soit des nerfs périphériques (neurostimulation transcutanée ou TENS : Transcutaneous Electrical Nerve Stimulation), soit des cordons dorsaux de la moelle (stimulation médullaire), soit du cortex cérébral précentral (stimulation corticale). Celle-ci renforce les fonctions inhibitrices du système nerveux qui peut entraîner un effet antalgique dans les douleurs chroniques neuropathiques : c’est la neuromodulation par électrostimulation. 
+•	L’organisation anatomique et fonctionnelle des fibres afférentes sensitives à l’entrée de la moelle épinière (jonction radicello-médullaire) permet de proposer un traitement chirurgical des douleurs segmentaires par excès de nociception. La destruction des fibres Ad et C contenues dans le contingent latéral en respectant les fibres myélinisées A-ß du contingent médial et du cordon postérieur constitue la DREZ Lesion (Dorsal Root Entry Zone) ou drezotomie. 
+•	Le risque essentiel est la paralysie de l’hémicorps sous le niveau du geste chirurgical par atteinte du faisceau cortico-spinal latéral 
+•	Les voies descendantes :Les voies somatomotrices 
+•	La motricité volontaire : la voie pyramidale Il existe au niveau de l’écorce cérébrale (cortex) un très grand nombre de cellules motrices dont le corps cellulaire est pyramidal. Cette cellule efférente du système moteur est la cellule pyramidale. Cette cellule pyramidale située dans le cortex cérébral moteur émet un prolongement : axone qui part du cerveau, traverse le tronc cérébral en participant ainsi à la formation de la substance blanche et descend dans la moelle épinière, où l’axone fait relais avec un deuxième neurone (deutoneurone). Une autre partie de ces axones s’arrête dans le tronc cérébral. Tous ces axones issus des neurones moteurs du cortex constituent la motricité volontaire et se regroupent en un faisceau appelé la voie pyramidale. 
+•	La voie pyramidale se destine : 
+•	1) au tronc cérébral pour les neurones des noyaux moteurs des nerfs crâniens (motricité volontaire de la tête) : c’est le faisceau cortico-nucléaire, 
+•	2) à la moelle épinière pour les neurones moteurs des membres : c’est le faisceau cortico-spinal. 
+•	Le faisceau cortico-spinal latéral (croisé) 
+•	80% des fibres croisent la ligne médiane au niveau de la moelle allongée (bulbe du tronc cérébral) en formant la décussation des pyramides. Il chemine ensuite dans le cordon latéral controlatéral de la substance blanche de la moelle épinière. 
+•	Ce faisceau cortico-spinal latéral croisé véhicule donc la motricité volontaire issue du cortex moteur de l’hémisphère cérébral controlatéral. 
+•	Un second faisceau dit faisceau pyramidal ventral (direct) 
+•	 chemine dans le cordon antérieur de la moelle épinière. Il ne représente que 20% des fibres cortico-spinales. Ce faisceau n’a pas croisé au niveau de la moelle allongée et borde les 2 versants de la fissure médiane. Finalement, ses fibres croisent la ligne médiane lors de leur terminaison. 
+•	Il existerait aussi un faisceau pyramidal qui reste homolatéral à son origine : faisceau pyramidal homolatéral de Déjerine dans le cordon antérieur de la moelle épinière. 
+•	La motricité automatique : les voies extrapyramidales 
+•	Il existe d'autres faisceaux moteurs véhiculant la motricité automatique : ce sont les voies extra-pyramidales. 
+•	Ces voies servent d’assistance à la motricité volontaire. 
+•	On peut regrouper ces voies en 2 contingents : 
+•	? Contingent antérieur : 
+•	? Contingent postérieur : 
+•	Contingent antérieur :
+•	ce sont les faisceaux vestibulo-spinal et réticulo-spinal (réticulée pontique) situés dans le cordon antérieur de la moelle. 
+•	Ils ont une influence facilitatrice sur la musculature axiale anti-gravifique (lutte contre la pesanteur) et les extenseurs. Ils jouent donc un rôle important dans le maintien du tonus de posture permettant de contrôler l’attitude du corps et l’équilibre.
+•	 La libération de ce système entraîne une hypertonie prédominant sur les extenseurs (hypertonie de décérébration)
+•	Contingent postérieur
+•	ce sont les faisceaux rubro-spinal et réticulo-spinal d’origine bulbaire situés dans le cordon latéral. 
+•	Ils ont une influence facilitatrice sur la musculature des fléchisseurs distaux. Ils jouent un rôle important dans l’exécution des mouvements fins et précis c’est-à-dire le tonus d’attitude et des gestes fins.
+•	 La libération de ce système entraîne plutôt une hypertonie prédominant sur les fléchisseurs (hypertonie de décortication).
+•	suite
+•	Tous ces faisceaux se terminent dans la corne ventrale de la SG de la moelle épinière où ils se connectent avec un deuxième neurone moteur (le motoneurone) qui reçoit ainsi les incitations pyramidales et extrapyramidales. 
+•	Il s'agit de la voie finale commune de Sherrington de tous les faisceaux moteurs.
+•	suite
+•	Le faisceau cortico-spinal latéral (croisé) se termine d’abord sur des neurones intermédiaires (interneurones) de la lame VII et ces interneurones se connectent ensuite avec les motoneurones de la lame IX. 
+•	Le contingent postérieur des voies extrapyramidales suit cette organisation en se destinant aussi aux lames VII. 
+•	 Le faisceau cortico-spinal ventral (direct) se termine avec le contingent antérieur des voies extrapyramidales sur les lames VIII de manière bilatérale.
+•	organisation à l'intérieur de la corne ventrale :
+•	? Les neurones les plus médiaux se destinent aux muscles les plus proximaux (proches de l'axe de la colonne vertébrale) et les neurones les plus latéraux se destinent aux muscles les plus distaux. 
+•	? La région ventrale de la corne ventrale contient les neurones qui innervent les muscles extenseurs (et les abducteurs), et en arrière se disposent les neurones moteurs des muscles fléchisseurs (et les adducteurs).
+•	Les neurones moteurs sont regroupés en noyaux qui forment des colonnes (lame IX de Rexed) s’étendant sur plusieurs segments médullaires. On peut considérer chaque colonne comme le centre d’innervation périphérique d’un muscle donné et chaque muscle a donc son centre étagé sur plusieurs métamères médullaires 
+•	Cette organisation appelée somatotopie existe également dans les voies sensitives et elle est présente à tous les niveaux du SNC.
+•	Déductions cliniques de l'étude de la systématisation de la moelle épinière :
+•	Une section ou une compression de la moelle épinière entraîne une interruption définitive (ou provisoire si compression) des voies ascendantes sensitives et descendantes motrices. Si la lésion se situe au niveau thoracique : il s’agit d’une paraplégie (paralysie des membres inférieurs). Si la paralysie est incomplète, on parle alors de paraparésie. Si la lésion se situe au niveau cervical : il s’agit d’une tétraplégie ou d’une tétraparésie (paralysie des 4 membres). 
+•	Typiquement, la compression lente de la moelle épinière associe 3 syndromes : lésionnel, sous-lésionnel et rachidien. 
+•	le syndrome lésionnel traduit l’atteinte d’une ou plusieurs racines au niveau de la compression. Il est d’une grande valeur localisatrice et est marqué par des douleurs radiculaires, 
+•	le syndrome sous-lésionnel traduit l’interruption fonctionnelle des faisceaux médullaires descendants et ascendants et se caractérise par des troubles moteurs : paraplégie ou tétraplégie progressive avec hypertonie et exagération des réflexes, des troubles sensitifs : anesthésie du territoire sous-lésionnel et des troubles sphinctériens : envies impérieuses et fréquentes d’uriner, retard de miction, 
+•	le syndrome rachidien est une raideur segmentaire du rachis, une déformation douloureuse ou une douleur provoquée. 
+
+
+
