@@ -26,7 +26,7 @@ use diagnostics;
 use Getopt::Long;
 use feature q{say};		# this is fucking awesome!
 
-use topic;
+# use topic;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # #			     sub routines
@@ -90,6 +90,29 @@ sub countin {
   my %count;			# per word
 }
 
+sub to_array {
+  my $doc = $_[0];
+  my @array;
+
+  # this is silly but, i'll figure it out later
+  goto FAILURE unless -s $doc;
+
+  open my $in, '<', $doc or (print "'$doc'\t: ".$!."\n" and goto FAILURE);
+
+  while (<$in>) {
+    unless ('#' eq substr $_, 0, 1) { # ignore comments
+      chomp $_;
+      push @array, (split /\s+/, $_);
+    }
+  }
+
+  close $in;
+
+  return @array;
+ FAILURE:
+  return undef;
+}
+
 # ($login, $passwd) = split(/:/); very nice
 
 # count the number words in a document
@@ -97,29 +120,15 @@ sub countwords {
   my $doc = $_[0];
   my $count = -1;
 
-  # say "\nin doc:\t".$doc unless $quiet;
-
-  open my $fin, '<', $doc or (print "'$doc'\t: ".$!."\n" and goto RET);
-
-  while (<$fin>) {
-    my ($line) = $_;			 # local variable
-    unless ('#' eq substr $line, 0, 1) { # ignore comments
-      chomp $line;
-      foreach my $str (split /\s+/, $line) {
-	$count++;
-      }
-    }
+  if (my @tmp = to_array ($doc)) {
+    $count = scalar @tmp;
   }
 
-  # never forget to close the opened file
-  close $fin;
-
-  say "are you sure that '$doc' is a text file?"
-  unless $count > 0 || $quiet;
+  say "is '$doc' a regular text file?" unless $count > 0 || $quiet;
   # perl has a cool built-in feature of dealing with files
   # -s: returns the files size in bytes.
  RET:
-  return $count unless -s $doc;
+  return $count;
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -128,12 +137,12 @@ sub countwords {
 
 handleargs;			# get all the args
 
-# # 0.0 number of words in the documents
-# for my $i (@main_args) {
-#   if (countwords($i) != -1) {
-#     print "'$i'\t: ".countwords($i)." word(s)\n"
-#   }
-# }
+# 0.0 number of words in the documents
+for my $i (@main_args) {
+  if (countwords($i) != -1) {
+    print "'$i'\t: ".countwords($i)." word(s)\n"
+  }
+}
 
 # ==================================================================
 # now, compute the coccurence of each word of a particular topic
@@ -162,8 +171,8 @@ handleargs;			# get all the args
 # ==================================================================
 #
 
-# this take a document and show the occurence of words in topics
-# and also its langauge level and whether it's a positive or
+# @description this take a document and show the occurence of words in
+# topics and also its langauge level and whether it's a positive or
 # a negative one.
 #
 # @param document
@@ -171,17 +180,37 @@ handleargs;			# get all the args
 # @param list of dictionaires
 #
 # @return array (or hashmap) of something i don't know for the moment.
+sub doc_analysis (\$\@\@) {
+  my $doc_ref = shift;
+  my $dicts_ref = shift;
+  my $topics_ref = shift;
 
-# not working!!
-#
-# sub docanalysis {
-#   my @doc = @$_[0];
-#   my @ds = @$_[1];
-#   my @ts =  @$_[2];
-#
-#   print "@doc\n";
-#   print "dicts"."@ds\n";
-#   print "topics"."@ts\n";
+  # words appearance
+  my %stats = undef;
+
+  # 1. get words statistics, foreach doc
+  # 1.1. figure topics
+  # for my $t (@$topics_ref) {
+  #   open my $tin, '<', $t or die ($MSG{'ERR'});
+
+  #   while (<$tin>) {
+  #
+  #   }
+
+  #   close $tin;
+  # }
+  # 1.2. figure language level
+
+  # 2. sort the results
+  # 3. pick the highest one while indicating it's language level
+}
+
+my @bar = to_array $dicts[0];
+
+# print "@bar";
+
+print countwords $main_args[0];
+
+# for my $d (@main_args) {
+#   print docanalysis $d, @dicts, @topics;
 # }
-
-# docanalysis \@main_args, \@dicts, \@topics;
