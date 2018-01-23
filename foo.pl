@@ -30,4 +30,28 @@
 
 # print Dumper(\@merged);
 
-print (scalar undef);
+# print (scalar undef);
+
+my %s;
+my %ss = {
+  s=>"sss",
+  b=>11
+ };
+
+for my $foo (1,2,44,5,4,2,2,1,4,1,2) {
+  $s{$foo}++;
+}
+
+# for my $bar (keys %s) {
+#   print $bar." - ".$s{$bar}."\n";
+# }
+
+my @arr = (%s, %ss);
+
+for my $f (@arr) {
+  for my $s (keys %$f) {
+    print "$s - ".$f->{$s}."\n";
+  }
+}
+
+

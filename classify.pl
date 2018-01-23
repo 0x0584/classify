@@ -49,7 +49,7 @@ my %MSG = (
   'use --help or -? for more information'
  );
 
-sub handleargs {
+sub handle_args {
   # Process options.
   if (@ARGV > 0) {
     GetOptions(
@@ -95,18 +95,20 @@ sub to_array {
   my @array;
 
   # this is silly but, i'll figure it out later
-  goto FAILURE unless -s $doc;
+  if (-s $doc) {
+    open my $in, '<', $doc or (print "'$doc'\t: ".$!."\n" and goto FAILURE);
 
-  open my $in, '<', $doc or (print "'$doc'\t: ".$!."\n" and goto FAILURE);
-
-  while (<$in>) {
-    unless ('#' eq substr $_, 0, 1) { # ignore comments
-      chomp $_;
-      push @array, (split /\s+/, $_);
+    while (<$in>) {
+      unless ('#' eq substr $_, 0, 1) { # ignore comments
+	chomp $_;
+	push @array, (split /\s+/, $_);
+      }
     }
-  }
 
-  close $in;
+    close $in;
+  } else {
+    goto FAILURE;
+  }
 
   return @array;
  FAILURE:
@@ -116,32 +118,19 @@ sub to_array {
 # ($login, $passwd) = split(/:/); very nice
 
 # count the number words in a document
-sub countwords {
-  my $doc = $_[0];
-  my $count = -1;
-
-  if (my @tmp = to_array ($doc)) {
-    $count = scalar @tmp;
-  }
-
-  say "is '$doc' a regular text file?" unless $count > 0 || $quiet;
-  # perl has a cool built-in feature of dealing with files
-  # -s: returns the files size in bytes.
- RET:
-  return $count;
+sub count_words {
+  return scalar to_array $_[0];
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # #			      main stuff
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-handleargs;			# get all the args
+handle_args;			# get all the args
 
 # 0.0 number of words in the documents
 for my $i (@main_args) {
-  if (countwords($i) != -1) {
-    print "'$i'\t: ".countwords($i)." word(s)\n"
-  }
+    print "'$i'\t: ".count_words($i)." word(s)\n"
 }
 
 # ==================================================================
@@ -186,31 +175,27 @@ sub doc_analysis (\$\@\@) {
   my $topics_ref = shift;
 
   # words appearance
-  my %stats = undef;
+  my @topic_stats;
+  my @dict_stats;
 
   # 1. get words statistics, foreach doc
   # 1.1. figure topics
-  # for my $t (@$topics_ref) {
-  #   open my $tin, '<', $t or die ($MSG{'ERR'});
+  for my $t (@$topics_ref) {
+    my %stats;
+    for my $word (to_array $t) {
+      $stats{$word}++;
+    }
+    # find how to deal with array of hashes
+    push @topic_stats, %stats;
+  }
 
-  #   while (<$tin>) {
-  #
-  #   }
-
-  #   close $tin;
-  # }
   # 1.2. figure language level
 
   # 2. sort the results
   # 3. pick the highest one while indicating it's language level
 }
 
-my @bar = to_array $dicts[0];
+for my $d (@main_args) {
+  print doc_analysis $d, @dicts, @topics;
+}
 
-# print "@bar";
-
-print countwords $main_args[0];
-
-# for my $d (@main_args) {
-#   print docanalysis $d, @dicts, @topics;
-# }
