@@ -1,12 +1,32 @@
 #!/usr/bin/perl
-#			 AUTHOR: Anas Rchid (0x0584)
-#			 CREATED: Sat. Jan 20, 2018
-#		         --------------------------
-#    DESCRIPTION: Classify documents based on the used dictionary.
-#      Then decide whether it was a positive or negative answer!
-#		         --------------------------
-# CURRENT: Classify documents
+#===============================================================================
 #
+#         FILE: classify.pl
+#
+#        USAGE: ./classify.pl [-q?] [-d foo.txt] [-t bar.txt] [-i in.txt]
+#
+#  DESCRIPTION: This is a `text-mining project, I work on it for two main
+#		reasons. Fisrt, becaused i want to learn perl; and the sec-
+#		ond one because it looks like an interesting project; to me.
+#
+#		The main purpose is to classify based on topic, language
+#		level and perhaps whether the document contains a postive
+#		or negative words the most.
+#
+#      OPTIONS: -d --dict	a dictionary as text file
+#		-t --topic	a topic as a text file
+#		-i --input	a document to be analyzed
+#		-q --quiet	no unnecessary output
+#		-? --help	show some help text
+# REQUIREMENTS: ---
+#         BUGS: ---
+#        NOTES: ---
+#       AUTHOR: Anas Rchid (0x0584) <rchid.anas@gmail.com>
+# ORGANIZATION: ---
+#      VERSION: 1.0
+#      CREATED: Sat. Jan 20, 2018
+#     REVISION: ---
+#===============================================================================
 
 # TODO: find a way to get a relative amount of files
 # CREATED: 01/20/2018
@@ -68,17 +88,15 @@ sub handle_args () {
 
 	unless ($quiet) {
 	    print "not super quiet $quiet\n";
-	    print "\ndicts:\t".join "\n\t@dicts\n";
-	    print "\ntopics:\t".join "\n\t@topics\n";
-	    print "\nargs:\t".join "\n\t@main_args\n";
+	    print "\ndicts:\t", join "\n\t@dicts\n";
+	    print "\ntopics:\t", join "\n\t@topics\n";
+	    print "\nargs:\t", join "\n\t@main_args\n";
 	    print "\n\t\t--------------\n\n";
 	}
     } else {
 	die ($MSG{'NO_DOC'});
     }
 }
-
-
 
 # count the appearance of words in a particular document according
 # to a certain topic or dictionary.
@@ -126,6 +144,18 @@ sub to_array {
 # count the number words in a document
 sub count_words {
     return scalar to_array $_[0];
+}
+
+# this function returns a hash-map that contains each word and it's number
+# of occurrences in the document.
+sub word_freq {
+    my %count;
+
+    while (my $w = shift @_) {
+	++$count{$w};
+    }
+
+    return \%count;
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -179,21 +209,24 @@ sub doc_analysis (\$\@\@) {
     my $topics_ref = shift;
 
     # words appearance
-    my @topic_stats;
-    my @dict_stats;
+    my (@topic_stats,@dict_stats);
 
     # 1. get words statistics, foreach doc
     # 1.1. figure topics
     for my $t (@$topics_ref) {
-	my %stats;
-	for my $word (to_array $t) {
-	    $stats{$word}++;
+    	push @topic_stats, word_freq to_array $t;
+    }
+
+    for my $ht (@topic_stats) {
+	for my $key (keys %$ht) {
+	    print "$key - ", $$ht{$key}, "\n";
 	}
-	# find how to deal with array of hashes
-	push @topic_stats, %stats;
     }
 
     # 1.2. figure language level
+    for my $d (@$dicts_ref) {
+	push @dict_stats, word_freq to_array $d;
+    }
 
     # 2. sort the results
     # 3. pick the highest one while indicating it's language level

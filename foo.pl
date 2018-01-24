@@ -1,11 +1,109 @@
 #!/usr/bin/perl
+#===============================================================================
 #
-#			  AUTHOR: ANAS RCHID
-#		     DESCRIPTION: testing some stuff..
+#         FILE: foo.pl
 #
-#   CREATED: 01/22/2018
-#   MODIFIED: 01/22/2018
+#        USAGE: ./foo.pl
 #
+#  DESCRIPTION: testing some stuff..
+#
+#       AUTHOR: Anas Rchid (0x0584) <rchid.anas@gmail.com>
+#      VERSION: 1.0
+#      CREATED: 01/22/2018
+#     MODIFIED: 01/24/2018
+#     REVISION: ---
+#===============================================================================
+
+sub word_freq {
+    my %count;
+
+    while (my $w = shift @_) {
+	 ++$count{$w};
+    }
+
+    return \%count;
+}
+
+my $r_hash = word_freq qw/
+			     I am Anas
+			     I have Some Cool things
+			     those things are
+			     one of many things
+			     of my things
+			 /;
+print $$r_hash{things}, "\n";
+my @harr = (
+    word_freq qw/have have cool test/,
+    word_freq qw/shit shoot shall/,
+    word_freq qw/nice hell hall hold hul/
+);
+
+for my $h (@harr) {
+    my ($key, $val) = each %$h;
+    print "$key - $val\n"
+}
+
+# a problem down here
+# VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+# my @arr;
+
+# sub foo {
+#     return @_;
+# }
+
+# sub bar {
+#     my %h;
+#     print "@_\n";
+#     for my $b (@_) {
+# 	print "$b - ", ++$h{$b}, "\n";
+#     }
+
+#     return \%h;
+# }
+
+# push @arr, bar foo (1,1,4,5,7,7,7,8,4,5,1,1,2,4,2);
+# push @arr, bar foo (2,2);
+
+# print "@arr\n+++\n";
+# print "this: $arr[0]{4}\n";
+
+# for my $h (@arr) {
+#     print "$h\n----\n";
+
+#     for my $key (keys %$h) {
+#     	print "$key -> ", %$h{$key}, "\n";
+#     	print "\n", %$h{1};
+#     }
+
+#     print "\n****\n";
+# }
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+# sub max {
+#   my $foo = shift @_;
+#   foreach (@_) {
+#       $foo = $_ if $_ > $foo;
+#   }
+#   return $foo;
+# }
+
+# print "this is a text";
+# print max ();
+# print max (1..6, 8, 1, (reverse 5..10));
+
+# my ($foo, $bar) = (0xff);
+# print "$foo - $bar";
+
+# my ($foo, $bar, $baz) = 7;
+
+# sub ss {
+#     $foo = 11;
+# }
+
+# $bar = ss;			# same as using '&'
+# $baz = &ss;			# same as calling without '&'
+
+# print "$foo $bar $baz";
 
 # my @strs = qw! test shit fool cool !;
 # my ($foo, $bar) = @strs;
@@ -13,12 +111,7 @@
 # print "@strs\n$foo\n$bar\n";
 # print scalar @strs;
 
-# this is not a good style!
-# @strs = qw(
-# 	      sss
-# 	      sss
-# 	      sss
-#       );
+# @strs = qw( sss sss sss );
 
 # @strs = (
 #     1, 2, 1,
@@ -67,23 +160,45 @@
 
 # print "@text\n";
 
-my @arr = reverse 1..6;
-print "@arr\n";
+# my @arr = reverse 1..6;
+# print "@arr\n";
 
-my %hash = (
-    foo => "hah",
-    bar => "jkj"
-);
+# my %hash = (
+#     foo => "hah",
+#     bar => "jkj"
+# );
 
-print "aaa".$hash{'bar'};
-print $hash{foo};
+# print "aaa".$hash{'bar'};
+# print $hash{foo};
+
+# my %h = (
+#     foo => "ssss",
+#     bar => "ffff",
+#     baz => "oooo"
+# );
+
+# my %hh = (
+#     foo => "ssss",
+#     bar => "ffff",
+#     baz => "oooo"
+# );
+
+# print $h{foo};
+
+# my @arr = (
+#     \%h,
+#     \%hh
+# );
+
+# print "@arr";
+# print $arr[0]{bar};
 
 # sub something (\@\@) {
-#   my $ref0 = shift;
-#   my $ref1 = shift;
+#     my $ref0 = shift;
+#     my $ref1 = shift;
 
-#   print @$ref0;			# dereference array
-#   print @$ref1;
+#     print @$ref0;		# dereference array
+#     print @$ref1;
 # }
 
 # my @arr0 = (5,1,2,2,1,4);
@@ -105,12 +220,12 @@ print $hash{foo};
 
 # my %s;
 # my %ss = {
-#   s=>"sss",
-#   b=>11
-#  };
+#     s=>"sss",
+#     b=>11
+# };
 
 # for my $foo (1,2,44,5,4,2,2,1,4,1,2) {
-#   $s{$foo}++;
+#     $s{$foo}++;
 # }
 
 # # for my $bar (keys %s) {
@@ -120,15 +235,21 @@ print $hash{foo};
 # my @arr = (%s, %ss);
 
 # for my $f (@arr) {
-#   for my $s (keys %$f) {
-#     print "$s - ".$f->{$s}."\n";
-#   }
+#     for my $s (keys %$f) {
+# 	print "$s - ".$f->{$s}."\n";
+#     }
 # }
 
 # my @arr = (
-#   { off => "kkk", on => "xxx" },
-#   { foo => "ssss", bar => "xxx" }
-#  );
+#     {
+# 	off => "kkk",
+# 	on => "xxx"
+#     },
+#     {
+# 	foo => "ssss",
+# 	bar => "xxx"
+#     }
+# );
 
 # print "sss";
 
@@ -138,13 +259,13 @@ print $hash{foo};
 # my @arr;
 
 # my %hash0 = {
-#   foo => "vvvv",
-#   bar => "ssss"
-#  };
+#     foo => "vvvv",
+#     bar => "ssss"
+# };
 # my %hash1 = {
-#   here => "oh! i am anas",
-#   there => "here's the best things"
-#  };
+#     here => "oh! i am anas",
+#     there => "here's the best things"
+# };
 
 # push @arr, %hash0;
 # push @arr, %hash1;
@@ -156,9 +277,9 @@ print $hash{foo};
 # print $arr[1]{'here'};
 
 # for my $h (@arr) {
-#   for my $key (keys %$h) {
-#     print %$h{$key}."\t";
-#   }
+#     for my $key (keys %$h) {
+# 	print %$h{$key}."\t";
+#     }
 # }
 
 # print "@arr0\n";
