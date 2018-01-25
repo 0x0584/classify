@@ -58,6 +58,7 @@ my @dicts = ();			# array of ditionaries
 my @input = ();			# array of ditionaries
 my $quiet = "";			# no unnecessary output
 my $help = "";			# show a basic help
+my $debug = 0;
 
 my %MSG = (
     ERR  => 'there was a problem while loading..',
@@ -66,7 +67,8 @@ my %MSG = (
     "\nOPTIONS:\n\t+ [-d=1..]\n\t+ [-t=1..]\n\t+ [-i=1..]\n",
     # #
     NO_DOC => 'no document was specified!'."\n".
-    'use --help or -? for more information'
+    'use --help or -? for more information',
+    LINE => "\n\t\t--------------\n\n"
 );
 
 sub handle_args () {
@@ -77,7 +79,8 @@ sub handle_args () {
 	    'help|?'  => \$help,
 	    'dict|d=s{1,}'  => \@dicts,
 	    'topic|t=s{1,}' => \@topics,
-	    'input|i=s{1,}' => \@input
+	    'input|i=s{1,}' => \@input,
+	    'debug|g'  => \$debug,
 	);
 
 	die ($MSG{'HELP'}) if $help;
@@ -88,10 +91,12 @@ sub handle_args () {
 
 	unless ($quiet) {
 	    print "not super quiet $quiet\n";
-	    print "\ndicts:\t", join "\n\t@dicts\n";
-	    print "\ntopics:\t", join "\n\t@topics\n";
-	    print "\nargs:\t", join "\n\t@main_args\n";
-	    print "\n\t\t--------------\n\n";
+	    print "\ndicts:\t", (join "\n\t", @dicts), "\n";
+	    print "\ntopics:\t", (join "\n\t", @topics),"\n";
+	    print "\nargs:\t", (join "\n\t", @main_args), "\n";
+	    print $MSG{LINE};
+
+	    # sleep 1;
 	}
     } else {
 	die ($MSG{'NO_DOC'});
@@ -129,11 +134,11 @@ sub to_array {
 	    }
 	}
 
+
 	close $in;
     } else {
 	goto FAILURE;
     }
-
     return @array;
   FAILURE:
     return undef;
@@ -158,16 +163,6 @@ sub word_freq {
     return \%count;
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# #			      main stuff
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-handle_args;			# get all the args
-
-# 0.0 number of words in the documents
-for my $i (@main_args) {
-    print "'$i'\t: ", count_words($i), " word(s)\n"
-}
 
 # ==================================================================
 # now, compute the coccurence of each word of a particular topic
@@ -204,34 +199,80 @@ for my $i (@main_args) {
 # @param	array of dictionaires
 # @return	array (or hashmap) of something i don't know for the moment.
 sub doc_analysis (\$\@\@) {
-    my $doc_ref = shift;
-    my $dicts_ref = shift;
-    my $topics_ref = shift;
+    my $do_ref = shift;		# file path
+    my $di_ref = shift;		# array of dictionaries
+    my $t_ref = shift;		# array of topics
+    # getting the frequency of words in the current doc
+    my ($do_stats, %t_stats, %di_stats) = word_freq to_array $$do_ref;
 
-    # words appearance
-    my (@topic_stats,@dict_stats);
-
-    # 1. get words statistics, foreach doc
-    # 1.1. figure topics
-    for my $t (@$topics_ref) {
-    	push @topic_stats, word_freq to_array $t;
-    }
-
-    for my $ht (@topic_stats) {
-	for my $key (keys %$ht) {
-	    print "$key - ", $$ht{$key}, "\n";
+    # print "@doc_words $docref\n";
+    # print to_array $$do_ref;
+    # 1. get words statistics
+    for my $word (to_array $$do_ref) {
+      CHECK:
+	unless ($word) {
+	    if ($debug) {
+		print ("!: $word\n");
+		sleep 1;
+	    }
+	    next;
 	}
+
+
+      TOPICS:
+	for my $topic (@$t_ref) {
+	    my $count = 0;
+	    for my $tword (to_array $topic) {
+	        $count += $$do_stats{$word} if $word eq $tword;
+    	    }
+	    $t_stats{$topic} += $count;
+    	}
+
+      DICTS:
+	for my $dict (@$di_ref) {
+	    my $count = 0;
+	    for my $dword (to_array $dict) {
+    		$count += $$do_stats{$word} if $word eq $dword;
+    	    }
+	    $di_stats{$dict} += $count;
+    	}
     }
 
-    # 1.2. figure language level
-    for my $d (@$dicts_ref) {
-	push @dict_stats, word_freq to_array $d;
+    unless ($quiet) {
+	for my $key (keys %t_stats) {
+	    print "$key - ", $t_stats{$key}, "\n";
+	}
+	print $MSG{LINE};
+	# sleep 1;
     }
+
+    # for my $ht (@topic_stats) {
+    # 	for my $key (keys %$ht) {
+    # 	    print "$key - ", $$ht{$key}, "\n";
+    # 	}
+    # }
+
+    # # 1.2. figure language level
+    # for my $d (@$dicts_ref) {
+    # 	push @dict_stats, word_freq to_array $d;
+    # }
 
     # 2. sort the results
     # 3. pick the highest one while indicating it's language level
+    
 }
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #			      main stuff
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+handle_args;			# get all the args
+
+# 0.0 number of words in the documents
+for my $i (@main_args) {
+    print "'$i'\t: ", count_words($i), " word(s)\n"
+}
+print $MSG{LINE};
 
 for my $d (@main_args) {
-    print doc_analysis $d, @dicts, @topics;
+    doc_analysis $d, @dicts, @topics;
 }

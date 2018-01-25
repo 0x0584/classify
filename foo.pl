@@ -13,35 +13,37 @@
 #     MODIFIED: 01/24/2018
 #     REVISION: ---
 #===============================================================================
+my $false = undef;
+my $true = !$false;
 
-sub word_freq {
-    my %count;
+# sub word_freq {
+#     my %count;
 
-    while (my $w = shift @_) {
-	 ++$count{$w};
-    }
+#     while (my $w = shift @_) {
+# 	 ++$count{$w};
+#     }
 
-    return \%count;
-}
+#     return \%count;
+# }
 
-my $r_hash = word_freq qw/
-			     I am Anas
-			     I have Some Cool things
-			     those things are
-			     one of many things
-			     of my things
-			 /;
-print $$r_hash{things}, "\n";
-my @harr = (
-    word_freq qw/have have cool test/,
-    word_freq qw/shit shoot shall/,
-    word_freq qw/nice hell hall hold hul/
-);
+# my $r_hash = word_freq qw/
+# 			     I am Anas
+# 			     I have Some Cool things
+# 			     those things are
+# 			     one of many things
+# 			     of my things
+# 			 /;
+# print $$r_hash{things}, "\n";
+# my @harr = (
+#     word_freq qw/have have cool test/,
+#     word_freq qw/shit shoot shall/,
+#     word_freq qw/nice hell hall hold hul/
+# );
 
-for my $h (@harr) {
-    my ($key, $val) = each %$h;
-    print "$key - $val\n"
-}
+# for my $h (@harr) {
+#     my ($key, $val) = each %$h;
+#     print "$key - $val\n"
+# }
 
 # a problem down here
 # VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV

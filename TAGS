@@ -1,0 +1,8 @@
+
+/home/arfed/Workspace/doc-class/classify.pl,233
+package classify;classify37,1176
+sub handle_args () {handle_args72,2222
+sub to_array {to_array115,3292
+sub count_words {count_words145,3883
+sub word_freq {word_freq151,4047
+sub doc_analysis (\$\@\@) {doc_analysis206,5625
