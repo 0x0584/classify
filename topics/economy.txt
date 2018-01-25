@@ -1,8 +1,12 @@
 # this line is ignored
-# word and its synonymous
-# 
+# i have to craete a better comparing function
+# one that compare a words in plural and singular as well
+investment
 money wealth
-company capital
+company companies
+capital
 dollar euro dirham yen
-industry
+industry industries
 stork storks
+increase decrease
+market

@@ -1,5 +1,7 @@
 # this line is ignored
-algorithm data-structure data structure
+# this is dumnb but i would fix it later! shit!
+algorithm algorithms
+data-structure data structure data-structures data structures
 file disk memory
 analysis complexity
 instruction step
@@ -8,3 +10,13 @@ frequency
 # this is a comment
 alu
 bus
+network osi 
+protocol 
+server
+topology
+os operating system
+programming program programs 
+application applications
+linked-list lists list
+lisp c perl pascal assembly cpp c++ cplusplus
+

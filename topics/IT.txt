@@ -1,6 +1,11 @@
 oracle microsoft apple
-database nosql bigdata big-data data rdbms dbms
+database databases rdbms dbms
+nosql bigdata big-data
+data
 cloud server storage
-ecosystem IDE
+ecosystem eco-system IDE
 java csharp c# c-sharp jdk
-windows solution
+windows
+tcp ip udp ftp http https cisco
+mysql mongodb apache
+internet

@@ -1,3 +1,5 @@
 * Intro
-  this is a test
   
+* flags
+  in case of debug =./classify.pl -i docs/* -d dictionaries/* -t topics/*  -g -s 0=
+  normal case =./classify.pl foo.txt -t top0.txt top1.txt=

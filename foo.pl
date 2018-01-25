@@ -13,8 +13,24 @@
 #     MODIFIED: 01/24/2018
 #     REVISION: ---
 #===============================================================================
-my $false = undef;
-my $true = !$false;
+
+my %hash = (
+    foo => 4,
+    bar => 5,
+    baz => 1,
+);
+
+print ((sort { $b <=> $a } values %hash)[0]);
+# print "@arr";
+
+# my @foo = (1..8);
+# print "@foo\n";
+
+# my @arr = sort { $b cmp $a } @foo;
+# print "@arr\n";
+
+# my $false = undef;
+# my $true = !$false;
 
 # sub word_freq {
 #     my %count;

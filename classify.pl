@@ -18,9 +18,13 @@
 #		-i --input	a document to be analyzed
 #		-q --quiet	no unnecessary output
 #		-? --help	show some help text
+#		[debug flags]
+#		-g --debug	show extra debug information (see -s)
+#		-s --sleep	set `sleep` timer, goes along with debug
 # REQUIREMENTS: ---
 #         BUGS: ---
-#        NOTES: ---
+#        NOTES: you may need to check your files encoding, this was tested on
+#		text files which contains only ASCII character.
 #       AUTHOR: Anas Rchid (0x0584) <rchid.anas@gmail.com>
 # ORGANIZATION: ---
 #      VERSION: 1.0
@@ -34,137 +38,7 @@
 # TODO: generate docs
 # CREATED: 01/21/2018
 
-package classify;
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# #			       pragmas
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# standard library
-use strict;
-use warnings;
-use diagnostics;
-use Getopt::Long;
-# use feature q{say};		# this is fucking awesome!
-
-# use topic;
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# #			     sub routines
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-my @main_args = ();		# array of passed files as aguments
-my @topics = ();		# array of topics
-my @dicts = ();			# array of ditionaries
-my @input = ();			# array of ditionaries
-my $quiet = "";			# no unnecessary output
-my $help = "";			# show a basic help
-my $debug = 0;
-
-my %MSG = (
-    ERR  => 'there was a problem while loading..',
-    # #
-    HELP => "usage: $0 foo.txt [OPTIONS..]\n".
-    "\nOPTIONS:\n\t+ [-d=1..]\n\t+ [-t=1..]\n\t+ [-i=1..]\n",
-    # #
-    NO_DOC => 'no document was specified!'."\n".
-    'use --help or -? for more information',
-    LINE => "\n\t\t--------------\n\n"
-);
-
-sub handle_args () {
-    # Process options.
-    if (@ARGV > 0) {
-	GetOptions (
-	    'quiet|q' => \$quiet,
-	    'help|?'  => \$help,
-	    'dict|d=s{1,}'  => \@dicts,
-	    'topic|t=s{1,}' => \@topics,
-	    'input|i=s{1,}' => \@input,
-	    'debug|g'  => \$debug,
-	);
-
-	die ($MSG{'HELP'}) if $help;
-
-	# merging just in case of sending files without
-	# specifing -i or --input
-	@main_args = (@input, @ARGV);
-
-	unless ($quiet) {
-	    print "not super quiet $quiet\n";
-	    print "\ndicts:\t", (join "\n\t", @dicts), "\n";
-	    print "\ntopics:\t", (join "\n\t", @topics),"\n";
-	    print "\nargs:\t", (join "\n\t", @main_args), "\n";
-	    print $MSG{LINE};
-
-	    # sleep 1;
-	}
-    } else {
-	die ($MSG{'NO_DOC'});
-    }
-}
-
-# count the appearance of words in a particular document according
-# to a certain topic or dictionary.
-# sub countin {
-#     my $doc  = $_[0];
-#     my $dict = $_[1];
-#     my $doc_count = countwords $_[0];
-
-#     my %count;			# per word
-# }
-
-# @description  takes a file 'foo.txt' which contains a set of words
-#		and returns it as an array
-# @param	document, a regular ASCII file
-# @return	array of words
-sub to_array {
-    my $doc = $_[0];
-    my @array;
-
-    # this is silly but, i'll figure it out later
-    if (-s $doc) {
-	open my $in, '<', $doc or (print "'$doc'\t: .$!\n" and goto FAILURE);
-
-	while (<$in>) {
-	    # ignore lines that start with a '#' as it is a standard
-	    # way to indicate a commented line.
-	    unless ('#' eq substr $_, 0, 1) {
-		chomp $_;
-		push @array, (split /\s+/, $_);
-	    }
-	}
-
-
-	close $in;
-    } else {
-	goto FAILURE;
-    }
-    return @array;
-  FAILURE:
-    return undef;
-}
-
-# ($login, $passwd) = split(/:/); very nice
-
-# count the number words in a document
-sub count_words {
-    return scalar to_array $_[0];
-}
-
-# this function returns a hash-map that contains each word and it's number
-# of occurrences in the document.
-sub word_freq {
-    my %count;
-
-    while (my $w = shift @_) {
-	++$count{$w};
-    }
-
-    return \%count;
-}
-
-
-# ==================================================================
+#===============================================================================
 # now, compute the coccurence of each word of a particular topic
 # and the whole document. indeed, something like the following:
 #
@@ -188,8 +62,137 @@ sub word_freq {
 #
 # 1. after collecting the appearances, find the most likey one among
 # them. (for the moment, choose just one)
-# ==================================================================
+#===============================================================================
+
+package classify;
+
+#===============================================================================
+#			       pragmas
+#===============================================================================
+use strict;
+use warnings;
+use diagnostics;
+use Getopt::Long;
+# use feature q{say};		# this is fucking awesome!
+# use topic;
+
+#===============================================================================
+#			     global vars
+#===============================================================================
+our @main_args = ();		# array of passed files as aguments
+our @topics = ();		# array of topics
+our @dicts = ();			# array of ditionaries
+our @input = ();			# array of ditionaries
+our $quiet = "";			# no unnecessary output
+our $help = "";			# show a basic help
+our $debug = 0;
+our $sleep_timer = 1;
+
+our %MSG = (
+    ERR  => 'there was a problem while loading..',
+    # #
+    HELP => "usage: $0 foo.txt [OPTIONS..]\n".
+    "\nOPTIONS:\n\t+ [-d=1..]\n\t+ [-t=1..]\n\t+ [-i=1..]\n",
+    # #
+    NO_DOC => 'no document was specified!'."\n".
+    'use --help or -? for more information',
+    LINE => "\n\t\t--------------\n\n"
+);
+
+#===============================================================================
+#			     sub routines
+#===============================================================================
+
+# @description  handles the command line arguments, which are specified in the
+#		header of this file. or just use the `-?|--help` flag to see
+#		the list of available arguments
+sub handle_args () {
+    # Process options.
+    if (@ARGV > 0) {
+	GetOptions (
+	    'quiet|q' => \$quiet,
+	    'help|?'  => \$help,
+	    'sleep|s=s{1,1}' => \$sleep_timer,
+	    'dict|d=s{1,}'  => \@dicts,
+	    'topic|t=s{1,}' => \@topics,
+	    'input|i=s{1,}' => \@input,
+	    'debug|g'  => \$debug,
+	);
+
+	die ($MSG{'HELP'}) if $help;
+
+	# merging just in case of sending files without
+	# specifing -i or --input
+	@main_args = (@input, @ARGV);
+
+	unless ($quiet) {
+	    print "not super quiet $quiet\n";
+	    print "\ndicts:\t", (join "\n\t", @dicts), "\n";
+	    print "\ntopics:\t", (join "\n\t", @topics),"\n";
+	    print "\nargs:\t", (join "\n\t", @main_args), "\n";
+	    print $MSG{LINE};
+
+	    sleep $sleep_timer if $debug;
+	}
+    } else {
+	die ($MSG{'NO_DOC'});
+    }
+}
+
+# @description  takes a file 'foo.txt' which contains a set of words
+# 		and returns it as an array
+# @param	document, a regular ASCII file
+# @return	array of words
 #
+# @todo		also skip special characters like :;,?!$
+#		=> check perl's regexps
+sub to_array {
+    my $doc = $_[0];
+    my @array;
+
+    # this is silly but, i'll figure it out later
+    if (-s $doc) {
+	open my $in, '<', $doc or (print "'$doc'\t: .$!\n" and goto FAILURE);
+
+	while (<$in>) {
+	    # ignore lines that start with a '#' as it is a standard
+	    # way to indicate a commented line.
+	    unless ('#' eq substr $_, 0, 1) {
+		chomp $_;
+		push @array, (split /\s+/, $_);
+	    }
+	}
+
+	close $in;
+    } else {
+	goto FAILURE;
+    }
+    return @array;
+  FAILURE:
+    return undef;
+}
+
+# @description  this function returns a hash-map that contains each word and
+#		it's number of occurrences in the document.
+# @param	document as array of words
+# @return	hashmap of each word and it's count
+sub word_freq {
+    my %count;
+    while (my $w = shift @_) {
+	++$count{$w};
+    }
+    return \%count;
+}
+
+# write advanced word-compare function
+sub word_cmp {
+    my ($w0, $w1) = (shift, shift);
+    ...;
+}
+
+sub sort_rule ($$) {
+    $_[1] cmp $_[0];
+}
 
 # @description	this take a document and show the occurence of words in
 #		topics and also its langauge level and whether it's a
@@ -198,6 +201,7 @@ sub word_freq {
 # @param	array of topics
 # @param	array of dictionaires
 # @return	array (or hashmap) of something i don't know for the moment.
+# @todo		find what words are the most frequented in a topic
 sub doc_analysis (\$\@\@) {
     my $do_ref = shift;		# file path
     my $di_ref = shift;		# array of dictionaries
@@ -205,25 +209,16 @@ sub doc_analysis (\$\@\@) {
     # getting the frequency of words in the current doc
     my ($do_stats, %t_stats, %di_stats) = word_freq to_array $$do_ref;
 
-    # print "@doc_words $docref\n";
-    # print to_array $$do_ref;
+    print "\tdoc: $$do_ref\n\n" if $debug;
+
     # 1. get words statistics
     for my $word (to_array $$do_ref) {
-      CHECK:
-	unless ($word) {
-	    if ($debug) {
-		print ("!: $word\n");
-		sleep 1;
-	    }
-	    next;
-	}
-
-
+      CHECK: next unless $word;
       TOPICS:
 	for my $topic (@$t_ref) {
 	    my $count = 0;
 	    for my $tword (to_array $topic) {
-	        $count += $$do_stats{$word} if $word eq $tword;
+	        $count += $$do_stats{$word} if $word eq lc $tword;
     	    }
 	    $t_stats{$topic} += $count;
     	}
@@ -232,47 +227,42 @@ sub doc_analysis (\$\@\@) {
 	for my $dict (@$di_ref) {
 	    my $count = 0;
 	    for my $dword (to_array $dict) {
-    		$count += $$do_stats{$word} if $word eq $dword;
+    		$count += $$do_stats{$word} if $word eq lc $dword;
     	    }
 	    $di_stats{$dict} += $count;
     	}
     }
 
-    unless ($quiet) {
+    # this is temporary, you have to figure out the return value
+    unless ($quiet or !$debug) {
 	for my $key (keys %t_stats) {
 	    print "$key - ", $t_stats{$key}, "\n";
 	}
-	print $MSG{LINE};
-	# sleep 1;
+	print "\n\n";
+	for my $key (keys %di_stats) {
+	    print "$key - ", $di_stats{$key}, "\n";
+	}
     }
 
-    # for my $ht (@topic_stats) {
-    # 	for my $key (keys %$ht) {
-    # 	    print "$key - ", $$ht{$key}, "\n";
-    # 	}
-    # }
-
-    # # 1.2. figure language level
-    # for my $d (@$dicts_ref) {
-    # 	push @dict_stats, word_freq to_array $d;
-    # }
-
-    # 2. sort the results
-    # 3. pick the highest one while indicating it's language level
-    
+    # 2. sort the results and pick the highest one
+    return (sort { $t_stats{$b} <=> $t_stats{$a} } keys %t_stats)[0];
 }
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# #			      main stuff
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+#===============================================================================
+#			      main stuff
+#===============================================================================
 handle_args;			# get all the args
 
 # 0.0 number of words in the documents
-for my $i (@main_args) {
-    print "'$i'\t: ", count_words($i), " word(s)\n"
+for my $doc (@main_args) {
+    print "'$doc'\t: ", (scalar to_array $doc), " word(s)\n"
 }
+
+sleep $sleep_timer if $debug;
 print $MSG{LINE};
 
 for my $d (@main_args) {
-    doc_analysis $d, @dicts, @topics;
+    print "\n$d: => ", (doc_analysis $d, @dicts, @topics);
+    print $MSG{LINE};
+    sleep $sleep_timer if $debug;
 }

@@ -1,0 +1,4 @@
+a netwrok has a topology called bus
+osi layers has several protocol tcp udp ftp
+we can use dbms to get data from a particular database
+

@@ -1,0 +1,3 @@
+the investment in databases have increased in the last decade thanks to all the working companies
+a lot of databases have been in the market for a long period few among them are
+mysql and oracle 

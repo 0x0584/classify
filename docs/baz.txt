@@ -1,0 +1,3 @@
+algorithms and data structures are one of fundamental building block of any program so that any program could be described by the following equation: algorithms + data structures = a program
+
+you can write programs in many programming languages like C Perl Lisp or even Java and C# 
