@@ -1,0 +1,108 @@
+not super quiet 
+
+dicts:	dicts/advanced.txt
+	dicts/negative.txt
+	dicts/positive.txt
+
+topics:	topics/cs.txt
+	topics/eco.txt
+	topics/it.txt
+	topics/philo.txt
+	topics/sport.txt
+
+args:	docs/bar.txt
+	docs/baz.txt
+	docs/cs0.txt
+	docs/foo.txt
+	docs/phi.txt
+
+		--------------
+
+'docs/bar.txt'	: 36 word(s)
+'docs/baz.txt'	: 48 word(s)
+'docs/cs0.txt'	: 26 word(s)
+'docs/foo.txt'	: 37 word(s)
+'docs/phi.txt'	: 31 word(s)
+
+		--------------
+
+	doc: docs/bar.txt
+
+topics/it.txt   	 16.67 %
+topics/sport.txt   	  0.00 %
+topics/eco.txt   	  8.33 %
+topics/cs.txt   	  0.00 %
+topics/philo.txt   	  0.00 %
+
+
+dicts/positive.txt  	  0.00%
+dicts/negative.txt  	  0.00%
+dicts/advanced.txt  	  0.00%
+
+docs/bar.txt: => topics/it.txt
+		--------------
+
+	doc: docs/baz.txt
+
+topics/it.txt   	  8.33 %
+topics/eco.txt   	  0.00 %
+topics/sport.txt   	  0.00 %
+topics/cs.txt   	 56.25 %
+topics/philo.txt   	  0.00 %
+
+
+dicts/positive.txt  	  0.00%
+dicts/negative.txt  	  0.00%
+dicts/advanced.txt  	  0.00%
+
+docs/baz.txt: => topics/cs.txt
+		--------------
+
+	doc: docs/cs0.txt
+
+topics/cs.txt   	 23.08 %
+topics/philo.txt   	  0.00 %
+topics/sport.txt   	  0.00 %
+topics/eco.txt   	  0.00 %
+topics/it.txt   	 23.08 %
+
+
+dicts/positive.txt  	  0.00%
+dicts/negative.txt  	  0.00%
+dicts/advanced.txt  	  0.00%
+
+docs/cs0.txt: => topics/cs.txt
+		--------------
+
+	doc: docs/foo.txt
+
+topics/it.txt   	  0.00 %
+topics/eco.txt   	  0.00 %
+topics/sport.txt   	  0.00 %
+topics/cs.txt   	  0.00 %
+topics/philo.txt   	  2.70 %
+
+
+dicts/positive.txt  	  2.70%
+dicts/advanced.txt  	  0.00%
+dicts/negative.txt  	  0.00%
+
+docs/foo.txt: => topics/philo.txt
+		--------------
+
+	doc: docs/phi.txt
+
+topics/it.txt   	  0.00 %
+topics/eco.txt   	  0.00 %
+topics/sport.txt   	  0.00 %
+topics/cs.txt   	  0.00 %
+topics/philo.txt   	 22.58 %
+
+
+dicts/negative.txt  	  0.00%
+dicts/advanced.txt  	  3.23%
+dicts/positive.txt  	  3.23%
+
+docs/phi.txt: => topics/philo.txt
+		--------------
+

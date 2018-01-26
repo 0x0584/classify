@@ -31,33 +31,6 @@
 #      CREATED: Sat. Jan 20, 2018
 #     REVISION: ---
 #===============================================================================
-
-#===============================================================================
-# now, compute the coccurence of each word of a particular topic
-# and the whole document. indeed, something like the following:
-#
-# 0. compute word appearance, for example suppose that:
-#
-#   + scalar(@doc) => 781
-#   + words_i {a_i, b_i, ..} are from dictionaries {0 .. i}
-#
-# let's take example dictionary_0, we would have
-#
-# word a_0: 520/781 (*)
-# word e_0: 78/781
-# word d_0: 83/781
-# word c_0: 51/781
-# word b_0: 43/781
-# ...
-# word n_0: m/781
-#
-# the `word a_0` from dictioanry_0 appears 66.60% of the time
-# within the document. now, \sum{words_i} is the weight of each topic
-#
-# 1. after collecting the appearances, find the most likey one among
-# them. (for the moment, choose just one)
-#===============================================================================
-
 package classify;
 
 #===============================================================================
@@ -75,9 +48,9 @@ use Getopt::Long;
 #===============================================================================
 our @main_args = ();		# array of passed files as aguments
 our @topics = ();		# array of topics
-our @dicts = ();			# array of ditionaries
-our @input = ();			# array of ditionaries
-our $quiet = "";			# no unnecessary output
+our @dicts = ();		# array of ditionaries
+our @input = ();		# array of ditionaries
+our $quiet = "";		# no unnecessary output
 our $help = "";			# show a basic help
 our $debug = 0;
 our $sleep_timer = 1;
@@ -145,6 +118,7 @@ sub to_array {
     my @array;
 
     # this is silly but, i'll figure it out later
+    # NOTE: later here means, as always, never..
     if (-s $doc) {
 	open my $in, '<', $doc or (print "'$doc'\t: .$!\n" and goto FAILURE);
 
@@ -205,7 +179,7 @@ sub doc_analysis (\$\@\@) {
 	    for my $tword (to_array $topic) {
 	        $count += $$do_stats{$word} if $word eq lc $tword;
     	    }
-	    $t_stats{$topic} += $count;
+	    $t_stats{$topic} += ((($count) *= 100) /= @doc_words);
     	}
 
       DICTS:
@@ -214,27 +188,25 @@ sub doc_analysis (\$\@\@) {
 	    for my $dword (to_array $dict) {
     		$count += $$do_stats{$word} if $word eq lc $dword;
     	    }
-	    $di_stats{$dict} += $count;
+	    $di_stats{$dict} += ((($count) *= 100) /= @doc_words);
     	}
     }
 
     # this is temporary, you have to figure out the return value
     unless ($quiet or !$debug) {
 	for my $key (keys %t_stats) {
-	    my $t_freq = $t_stats{$key}*100/@doc_words;
 	    print "$key   ";
-	    print sprintf("\t%6s", sprintf("%.2f", $t_freq)), " %\n";
+	    print sprintf("\t%6s", sprintf("%.2f", $t_stats{$key})), "%\n";
 	}
 	print "\n\n";
 	for my $key (keys %di_stats) {
-	    my $d_freq = $di_stats{$key}*100/@doc_words;
 	    print "$key  ";
-	    print sprintf("\t%6s", sprintf("%.2f", $d_freq)), "%\n";
+	    print sprintf("\t%6s", sprintf("%.2f", $di_stats{$key})), "%\n";
 	}
     }
 
     # 2. sort the results and pick the highest one
-    return (sort { $t_stats{$b} <=> $t_stats{$a} } keys %t_stats)[0];
+    return ($do_stats, \%t_stats, \%di_stats);
 }
 
 #===============================================================================
@@ -252,6 +224,6 @@ print $MSG{LINE};
 
 for my $d (@main_args) {
     print "\n$d: => ", (doc_analysis $d, @dicts, @topics);
-    print $MSG{LINE};
     sleep $sleep_timer if $debug;
+    print $MSG{LINE};
 }

@@ -14,13 +14,18 @@
 #     REVISION: ---
 #===============================================================================
 
-my %hash = (
-    foo => 4,
-    bar => 5,
-    baz => 1,
-);
+my $foo = 100;
 
-print ((sort { $b <=> $a } values %hash)[0]);
+print (($foo *= 5) /= 10);
+
+# my %hash = (
+#     foo => 4,
+#     bar => 5,
+#     baz => 1,
+# );
+
+# print ((sort { $b <=> $a } values %hash)[0]);
+
 # print "@arr";
 
 # my @foo = (1..8);
