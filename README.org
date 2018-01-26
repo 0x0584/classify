@@ -1,5 +1,26 @@
-* Intro
+* Introduction
+
+  + This is a project that I did for the main reason, which is fun of course, why would you code anyway?
+
+  + And the other reason is to /learn how to code in Perl/. I have always found that Perl is weird yet very interesting language with many useful built-in functionalities. 
+
+  indeed, i was looking recently on many machine-learning related topics, such /text mining/, so here's where the idea of =classify= came from.
+
+** Up and Running..
+   #+BEGIN_SRC shell
+   # in case of debug
+   $ ./classify.pl -i docs/* -d dicts/* -t topics/* -g -s 0
   
-* flags
-  in case of debug =./classify.pl -i docs/* -d dictionaries/* -t topics/*  -g -s 0=
-  normal case =./classify.pl foo.txt -t top0.txt top1.txt=
+   # normal case 
+   $ ./classify.pl foo.txt -t top0.txt top1.txt
+   #+END_SRC
+
+* Stuff TODO [0/5]
+  + [ ] parse words better
+  + [ ] compare words better
+  + [ ] export statistics as
+    + [ ] txt
+    + [ ] pdf with charts
+    + [ ] html, maybe?
+  + [ ] +find nice resources (dictionaries and topics)+
+  + [ ] +generate docs+

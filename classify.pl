@@ -2,6 +2,7 @@
 #===============================================================================
 #
 #         FILE: classify.pl
+# REQUIREMENTS: ---
 #
 #        USAGE: ./classify.pl [-q?] [-d foo.txt] [-t bar.txt] [-i in.txt]
 #
@@ -12,6 +13,7 @@
 #		The main purpose is to classify based on topic, language
 #		level and perhaps whether the document contains a postive
 #		or negative words the most.
+#       AUTHOR: Anas Rchid (0x0584) <rchid.anas@gmail.com>
 #
 #      OPTIONS: -d --dict	a dictionary as text file
 #		-t --topic	a topic as a text file
@@ -21,15 +23,14 @@
 #		[debug flags]
 #		-g --debug	show extra debug information (see -s)
 #		-s --sleep	set `sleep` timer, goes along with debug
-# REQUIREMENTS: ---
-#         BUGS: ---
+#         BUGS: weak word parsing (do not check for punctuation marks)
+#		no word-root comparison (philosophy vs philosopher)
+#
 #        NOTES: you may need to check your files encoding, this was tested on
 #		text files which contains only ASCII character.
-#       AUTHOR: Anas Rchid (0x0584) <rchid.anas@gmail.com>
-# ORGANIZATION: ---
 #      VERSION: 1.0
 #      CREATED: Sat. Jan 20, 2018
-#     REVISION: ---
+#     REVISION: Fri. Jan 26, 2018
 #===============================================================================
 package classify;
 
@@ -192,21 +193,39 @@ sub doc_analysis (\$\@\@) {
     	}
     }
 
-    # this is temporary, you have to figure out the return value
-    unless ($quiet or !$debug) {
-	for my $key (keys %t_stats) {
-	    print "$key   ";
-	    print sprintf("\t%6s", sprintf("%.2f", $t_stats{$key})), "%\n";
-	}
-	print "\n\n";
-	for my $key (keys %di_stats) {
-	    print "$key  ";
-	    print sprintf("\t%6s", sprintf("%.2f", $di_stats{$key})), "%\n";
-	}
-    }
-
     # 2. sort the results and pick the highest one
     return ($do_stats, \%t_stats, \%di_stats);
+}
+
+sub export_analysis {
+    my ($do_s, $t_s, $di_s) = (shift, shift, shift);
+    my %do;
+
+    my $i = 1;
+    for my $k (keys %$do_s) {
+	$do{$$do_s{$k}} .= ($k.("/"));
+    }
+
+    print "word statistics:\n----------------\n";
+    for my $k (keys %do) {
+	printf "%-4s [%s]\n", $k,  $do{$k};
+    }
+
+    print "\ntopic statistics:\n-----------------\n";
+    for my $key (keys %$t_s) {
+	print "$key   ";
+	printf "\t%6s", sprintf("%.2f", $$t_s{$key});
+	print "%\n";
+    }
+
+    print "\ndictionary statistics:\n----------------------\n";
+    for my $key (keys %$di_s) {
+	print "$key  ";
+	printf "\t%6s", sprintf("%.2f", $$di_s{$key});
+	print "%\n";
+    }
+
+    print "\n\t=> ", (sort {%$t_s{$b} <=> %$t_s{$b}} keys %$t_s)[0];
 }
 
 #===============================================================================
@@ -216,14 +235,16 @@ handle_args;			# get all the args
 
 # 0.0 number of words in the documents
 for my $doc (@main_args) {
-    print "'$doc'\t: ", (scalar to_array $doc), " word(s)\n"
+    print "'$doc'\t: ", to_array $doc, " word(s)\n"
 }
 
 sleep $sleep_timer if $debug;
 print $MSG{LINE};
 
+
 for my $d (@main_args) {
-    print "\n$d: => ", (doc_analysis $d, @dicts, @topics);
+    my @analysis = doc_analysis $d, @dicts, @topics;
+    export_analysis @analysis;
     sleep $sleep_timer if $debug;
     print $MSG{LINE};
 }

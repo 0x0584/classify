@@ -18,91 +18,132 @@ args:	docs/bar.txt
 
 		--------------
 
-'docs/bar.txt'	: 36 word(s)
-'docs/baz.txt'	: 48 word(s)
-'docs/cs0.txt'	: 26 word(s)
-'docs/foo.txt'	: 37 word(s)
-'docs/phi.txt'	: 31 word(s)
-
+'docs/bar.txt'	: theinvestmentindatabaseshaveincreasedinthelastdecadethankstoalltheworkingcompaniesalotofdatabaseshavebeeninthemarketforalongperiodfewamongthemaremysqlandoracle'docs/baz.txt'	: algorithmsanddatastructuresareoneoffundamentalbuildingblockofanyprogramsothatanyprogramcouldbedescribedbythefollowingequation:algorithms+datastructures=aprogramyoucanwriteprogramsinmanyprogramminglanguageslikeCPerlLisporevenJavaandC#'docs/cs0.txt'	: anetwrokhasatopologycalledbusosilayershasseveralprotocoltcpudpftpwecanusedbmstogetdatafromaparticulardatabase'docs/foo.txt'	: kantwasagreatphilosopherbackin1788hepublishedabookcalledcriticsofpurereasoninganditwasarevolutionarybookbecauseofhistopicthatismoralsalsootherphilosophershavediscussedothertopics'docs/phi.txt'	: thisisatestofthephilosophyclassification.iwoulduseethicsthusspinozaandtheproblemfundamentalproblemofevilandgoodthosearetermsdiscussedbydescartesandkant
 		--------------
 
 	doc: docs/bar.txt
 
-topics/it.txt   	 16.67 %
-topics/sport.txt   	  0.00 %
-topics/eco.txt   	  8.33 %
-topics/cs.txt   	  0.00 %
-topics/philo.txt   	  0.00 %
+word statistics:
+----------------
+4    [the/]
+1    [among/lot/and/oracle/them/thanks/few/for/are/last/decade/market/increased/working/all/companies/been/period/long/investment/mysql/to/of/]
+2    [a/databases/have/]
+3    [in/]
 
+topic statistics:
+-----------------
+topics/cs.txt   	  0.00%
+topics/philo.txt   	  0.00%
+topics/eco.txt   	  8.33%
+topics/it.txt   	 16.67%
+topics/sport.txt   	  0.00%
 
-dicts/positive.txt  	  0.00%
+dictionary statistics:
+----------------------
 dicts/negative.txt  	  0.00%
-dicts/advanced.txt  	  0.00%
+dicts/advanced.txt  	  5.56%
+dicts/positive.txt  	  0.00%
 
-docs/bar.txt: => topics/it.txt
+	=> topics/cs.txt
 		--------------
 
 	doc: docs/baz.txt
 
-topics/it.txt   	  8.33 %
-topics/eco.txt   	  0.00 %
-topics/sport.txt   	  0.00 %
-topics/cs.txt   	 56.25 %
-topics/philo.txt   	  0.00 %
+word statistics:
+----------------
+3    [program/]
+2    [and/data/structures/algorithms/any/of/]
+1    [+/the/in/so/block/are/Perl/programs/equation:/one/even/programming/Lisp/many/=/could/fundamental/languages/you/that/Java/described/C#/write/a/building/be/like/can/or/C/by/following/]
 
+topic statistics:
+-----------------
+topics/philo.txt   	  0.00%
+topics/cs.txt   	 56.25%
+topics/it.txt   	  8.33%
+topics/eco.txt   	  0.00%
+topics/sport.txt   	  0.00%
 
+dictionary statistics:
+----------------------
 dicts/positive.txt  	  0.00%
+dicts/advanced.txt  	  2.08%
 dicts/negative.txt  	  0.00%
-dicts/advanced.txt  	  0.00%
 
-docs/baz.txt: => topics/cs.txt
+	=> topics/philo.txt
 		--------------
 
 	doc: docs/cs0.txt
 
-topics/cs.txt   	 23.08 %
-topics/philo.txt   	  0.00 %
-topics/sport.txt   	  0.00 %
-topics/eco.txt   	  0.00 %
-topics/it.txt   	 23.08 %
+word statistics:
+----------------
+3    [a/]
+2    [has/]
+1    [protocol/tcp/layers/we/bus/netwrok/from/particular/several/udp/database/called/topology/can/osi/get/to/dbms/ftp/use/data/]
 
+topic statistics:
+-----------------
+topics/sport.txt   	  0.00%
+topics/philo.txt   	  0.00%
+topics/cs.txt   	 23.08%
+topics/it.txt   	 23.08%
+topics/eco.txt   	  0.00%
 
-dicts/positive.txt  	  0.00%
+dictionary statistics:
+----------------------
 dicts/negative.txt  	  0.00%
+dicts/positive.txt  	  0.00%
 dicts/advanced.txt  	  0.00%
 
-docs/cs0.txt: => topics/cs.txt
+	=> topics/sport.txt
 		--------------
 
 	doc: docs/foo.txt
 
-topics/it.txt   	  0.00 %
-topics/eco.txt   	  0.00 %
-topics/sport.txt   	  0.00 %
-topics/cs.txt   	  0.00 %
-topics/philo.txt   	  2.70 %
+word statistics:
+----------------
+2    [other/book/was/of/]
+1    [philosophers/topics/in/that/and/because/published/revolutionary/morals/philosopher/critics/great/topic/reasoning/called/he/discussed/1788/also/is/have/back/it/his/pure/kant/]
+3    [a/]
 
+topic statistics:
+-----------------
+topics/cs.txt   	  0.00%
+topics/philo.txt   	 10.81%
+topics/eco.txt   	  0.00%
+topics/it.txt   	  0.00%
+topics/sport.txt   	  0.00%
 
-dicts/positive.txt  	  2.70%
-dicts/advanced.txt  	  0.00%
+dictionary statistics:
+----------------------
+dicts/positive.txt  	  5.41%
+dicts/advanced.txt  	  5.41%
 dicts/negative.txt  	  0.00%
 
-docs/foo.txt: => topics/philo.txt
+	=> topics/cs.txt
 		--------------
 
 	doc: docs/phi.txt
 
-topics/it.txt   	  0.00 %
-topics/eco.txt   	  0.00 %
-topics/sport.txt   	  0.00 %
-topics/cs.txt   	  0.00 %
-topics/philo.txt   	 22.58 %
+word statistics:
+----------------
+1    [classification./i/descartes/a/good/terms/test/are/evil/fundamental/thus/is/those/spinoza/would/this/use/philosophy/by/kant/ethics/discussed/]
+2    [problem/the/of/]
+3    [and/]
 
+topic statistics:
+-----------------
+topics/cs.txt   	  0.00%
+topics/philo.txt   	 22.58%
+topics/eco.txt   	  0.00%
+topics/it.txt   	  0.00%
+topics/sport.txt   	  0.00%
 
+dictionary statistics:
+----------------------
 dicts/negative.txt  	  0.00%
-dicts/advanced.txt  	  3.23%
+dicts/advanced.txt  	  6.45%
 dicts/positive.txt  	  3.23%
 
-docs/phi.txt: => topics/philo.txt
+	=> topics/cs.txt
 		--------------
 
