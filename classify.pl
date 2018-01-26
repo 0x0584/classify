@@ -32,12 +32,6 @@
 #     REVISION: ---
 #===============================================================================
 
-# TODO: find a way to get a relative amount of files
-# CREATED: 01/20/2018
-
-# TODO: generate docs
-# CREATED: 01/21/2018
-
 #===============================================================================
 # now, compute the coccurence of each word of a particular topic
 # and the whole document. indeed, something like the following:
@@ -184,16 +178,6 @@ sub word_freq {
     return \%count;
 }
 
-# write advanced word-compare function
-sub word_cmp {
-    my ($w0, $w1) = (shift, shift);
-    ...;
-}
-
-sub sort_rule ($$) {
-    $_[1] cmp $_[0];
-}
-
 # @description	this take a document and show the occurence of words in
 #		topics and also its langauge level and whether it's a
 #		positive or a negative one.
@@ -206,13 +190,14 @@ sub doc_analysis (\$\@\@) {
     my $do_ref = shift;		# file path
     my $di_ref = shift;		# array of dictionaries
     my $t_ref = shift;		# array of topics
+    my @doc_words = to_array $$do_ref;
     # getting the frequency of words in the current doc
-    my ($do_stats, %t_stats, %di_stats) = word_freq to_array $$do_ref;
+    my ($do_stats, %t_stats, %di_stats) = word_freq @doc_words;
 
     print "\tdoc: $$do_ref\n\n" if $debug;
 
     # 1. get words statistics
-    for my $word (to_array $$do_ref) {
+    for my $word (@doc_words) {
       CHECK: next unless $word;
       TOPICS:
 	for my $topic (@$t_ref) {
@@ -236,11 +221,15 @@ sub doc_analysis (\$\@\@) {
     # this is temporary, you have to figure out the return value
     unless ($quiet or !$debug) {
 	for my $key (keys %t_stats) {
-	    print "$key - ", $t_stats{$key}, "\n";
+	    my $t_freq = $t_stats{$key}*100/@doc_words;
+	    print "$key   ";
+	    print sprintf("\t%6s", sprintf("%.2f", $t_freq)), " %\n";
 	}
 	print "\n\n";
 	for my $key (keys %di_stats) {
-	    print "$key - ", $di_stats{$key}, "\n";
+	    my $d_freq = $di_stats{$key}*100/@doc_words;
+	    print "$key  ";
+	    print sprintf("\t%6s", sprintf("%.2f", $d_freq)), "%\n";
 	}
     }
 
