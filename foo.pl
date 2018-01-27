@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 #===============================================================================
 #
 #         FILE: foo.pl
@@ -8,25 +8,51 @@
 #  DESCRIPTION: testing some stuff..
 #
 #       AUTHOR: Anas Rchid (0x0584) <rchid.anas@gmail.com>
-#      VERSION: 1.0
 #      CREATED: 01/22/2018
-#     MODIFIED: 01/24/2018
-#     REVISION: ---
+#     MODIFIED: 01/27/2018
+#     REVISION: +2
 #===============================================================================
 
-my %h = (
-    foo => 1,
-    bar => 1,
-    cool => 2,
-    huh => 1,
-    baz => 3
-);
+# my @s_arr = grep /\p{L}/i, split ' ', "this is a word 1987 bla bla blo bli";
+# print "@s_arr";
 
-my %h0;
+# print " ".lc for split ' ', "THIS Is A TEst SO ahVE You Do IT?";
+# print lc "HAVE" eq lc "HavE" ? "t" : "nil";
 
-for my $key (keys %h) {
-    $h0{$key} .= $key." ";
-}
+# my $line = "(this! is what's) i would, "
+# ."{like; to} know. kill "
+# ."[em' all! this] is it?";
+
+# my @words = grep /\p{L}/i, split ' ', $line;
+
+# print "b: $line\n";
+# # print $_."\n" for @words;
+# # sleep 2;
+
+# s/^\P{L}+//, s/\P{L}+$// for @words;
+# print "a: @words\n";
+
+# my @arr;
+
+# push @arr, (grep /\p{L}/, split ' ', $line);
+
+# print "i: @arr\n";
+
+# print "@lines"
+# while
+# my %h = (
+#     foo => 1,
+#     bar => 1,
+#     cool => 2,
+#     huh => 1,
+#     baz => 3
+# );
+
+# my %h0;
+
+# for my $key (keys %h) {
+#     $h0{$key} .= $key." ";
+# }
 
 # my $foo = 100;
 

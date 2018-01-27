@@ -23,9 +23,8 @@
 #		[debug flags]
 #		-g --debug	show extra debug information (see -s)
 #		-s --sleep	set `sleep` timer, goes along with debug
-#         BUGS: weak word parsing (do not check for punctuation marks)
-#		no word-root comparison (philosophy vs philosopher)
 #
+#         BUGS: no word-root comparison (philosophy vs philosopher)
 #        NOTES: you may need to check your files encoding, this was tested on
 #		text files which contains only ASCII character.
 #      VERSION: 1.0
@@ -49,9 +48,9 @@ use Getopt::Long;
 #===============================================================================
 our @main_args = ();		# array of passed files as aguments
 our @topics = ();		# array of topics
-our @dicts = ();		# array of ditionaries
-our @input = ();		# array of ditionaries
-our $quiet = "";		# no unnecessary output
+our @dicts = ();			# array of ditionaries
+our @input = ();			# array of ditionaries
+our $quiet = 0;			# no unnecessary output
 our $help = "";			# show a basic help
 our $debug = 0;
 our $sleep_timer = 1;
@@ -111,31 +110,27 @@ sub handle_args () {
 # 		and returns it as an array
 # @param	document, a regular ASCII file
 # @return	array of words
-#
-# @todo		also skip special characters like :;,?!$
-#		=> check perl's regexps
 sub to_array {
     my $doc = $_[0];
     my @array;
 
     # this is silly but, i'll figure it out later
-    # NOTE: later here means, as always, never..
+    # NOTE: `later` here means, as always, never..
     if (-s $doc) {
 	open my $in, '<', $doc or (print "'$doc'\t: .$!\n" and goto FAILURE);
 
 	while (<$in>) {
-	    # ignore lines that start with a '#' as it is a standard
-	    # way to indicate a commented line.
-	    unless ('#' eq substr $_, 0, 1) {
-		chomp $_;
-		push @array, (split /\s+/, $_);
-	    }
+	    # this is better, perl is a hell of a language!
+	    push @array, grep /\p{L}/i, split /\s+/, $_ unless /^#/;
 	}
+
+	s/^\P{L}+// or s/\P{L}+$// for @array; # remove any :punct:
 
 	close $in;
     } else {
 	goto FAILURE;
     }
+
     return @array;
   FAILURE:
     return undef;
@@ -173,12 +168,13 @@ sub doc_analysis (\$\@\@) {
 
     # 1. get words statistics
     for my $word (@doc_words) {
-      CHECK: next unless $word;
+	next unless $word;
+
       TOPICS:
 	for my $topic (@$t_ref) {
 	    my $count = 0;
-	    for my $tword (to_array $topic) {
-	        $count += $$do_stats{$word} if $word eq lc $tword;
+	    for (to_array $topic) {
+		$count += $$do_stats{$word} if $_ and lc $word eq lc $_;
     	    }
 	    $t_stats{$topic} += ((($count) *= 100) /= @doc_words);
     	}
@@ -186,8 +182,8 @@ sub doc_analysis (\$\@\@) {
       DICTS:
 	for my $dict (@$di_ref) {
 	    my $count = 0;
-	    for my $dword (to_array $dict) {
-    		$count += $$do_stats{$word} if $word eq lc $dword;
+	    for (to_array $dict) {
+		$count += $$do_stats{$word} if $_ and lc $word eq lc $_;
     	    }
 	    $di_stats{$dict} += ((($count) *= 100) /= @doc_words);
     	}
@@ -197,35 +193,33 @@ sub doc_analysis (\$\@\@) {
     return ($do_stats, \%t_stats, \%di_stats);
 }
 
-sub export_analysis {
+sub show_analysis {
     my ($do_s, $t_s, $di_s) = (shift, shift, shift);
     my %do;
 
-    my $i = 1;
-    for my $k (keys %$do_s) {
-	$do{$$do_s{$k}} .= ($k.("/"));
-    }
+    goto FINAL if $quiet;
+
+    # group words by their occurrence
+    $do{$$do_s{$_}} .= ($_.("/")) for keys %$do_s;
 
     print "word statistics:\n----------------\n";
-    for my $k (keys %do) {
-	printf "%-4s [%s]\n", $k,  $do{$k};
-    }
+    printf "%-4s [%s]\n", $_,  $do{$_} for sort {
+	$b <=> $a
+    } keys %do;
 
     print "\ntopic statistics:\n-----------------\n";
-    for my $key (keys %$t_s) {
-	print "$key   ";
-	printf "\t%6s", sprintf("%.2f", $$t_s{$key});
-	print "%\n";
-    }
+    print "$_ ", (sprintf "%6s", sprintf("%.2f", $$t_s{$_})). "%\n" for sort {
+	$$t_s{$b} <=> $$t_s{$a}
+    } keys %$t_s;
 
-    print "\ndictionary statistics:\n----------------------\n";
-    for my $key (keys %$di_s) {
-	print "$key  ";
-	printf "\t%6s", sprintf("%.2f", $$di_s{$key});
-	print "%\n";
-    }
+  FINAL:
+    print "dictionary statistics:\n----------------------\n";
+    print "$_ ", (sprintf "%6s", sprintf "%.2f", $$di_s{$_}), "%\n" for sort {
+	$$di_s{$b} <=> $$di_s{$a}
+    } keys %$di_s;
 
-    print "\n\t=> ", (sort {%$t_s{$b} <=> %$t_s{$b}} keys %$t_s)[0];
+    my $key = (sort {$$t_s{$b} <=> $$t_s{$a}} keys %$t_s)[0];
+    print "\n\t=> $key (", (sprintf "%.2f", $$t_s{$key}), "%)\n";
 }
 
 #===============================================================================
@@ -235,16 +229,21 @@ handle_args;			# get all the args
 
 # 0.0 number of words in the documents
 for my $doc (@main_args) {
-    print "'$doc'\t: ", to_array $doc, " word(s)\n"
+    # my @arr = to_array $doc;
+    print "'$doc'\t: ", (scalar to_array $doc), " word(s)\n"
 }
 
 sleep $sleep_timer if $debug;
 print $MSG{LINE};
 
+for my $doc (@main_args) {
+    my @analysis = doc_analysis $doc, @dicts, @topics;
 
-for my $d (@main_args) {
-    my @analysis = doc_analysis $d, @dicts, @topics;
-    export_analysis @analysis;
-    sleep $sleep_timer if $debug;
+    print "\t'$doc:' \n\n";
+    print "\ncontent:[", (join " ", to_array $doc) ,"]\n\n" if $debug;
+
+    show_analysis @analysis;
+
+    sleep $sleep_timer if $debug and !$quiet;
     print $MSG{LINE};
 }

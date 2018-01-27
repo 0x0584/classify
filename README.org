@@ -15,9 +15,9 @@
    $ ./classify.pl foo.txt -t top0.txt top1.txt
    #+END_SRC
 
-* Stuff TODO [0/5]
-  + [ ] parse words better
-  + [ ] compare words better
+* Stuff TODO [2/5]
+  + [X] parse words better
+  + [X] compare words better
   + [ ] export statistics as
     + [ ] txt
     + [ ] pdf with charts
