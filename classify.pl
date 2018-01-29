@@ -31,6 +31,7 @@
 #      CREATED: Sat. Jan 20, 2018
 #     REVISION: Fri. Jan 26, 2018
 #===============================================================================
+
 package classify;
 
 #===============================================================================
@@ -40,6 +41,8 @@ use strict;
 use warnings;
 use diagnostics;
 use Getopt::Long;
+use File::Basename;
+
 # use feature q{say};		# this is fucking awesome!
 # use topic;
 
@@ -77,13 +80,13 @@ sub handle_args () {
     # Process options.
     if (@ARGV > 0) {
 	GetOptions (
-	    'quiet|q' => \$quiet,
-	    'help|?'  => \$help,
+	    'quiet|q'	     => \$quiet,
+	    'help|?'         => \$help,
 	    'sleep|s=s{1,1}' => \$sleep_timer,
-	    'dict|d=s{1,}'  => \@dicts,
-	    'topic|t=s{1,}' => \@topics,
-	    'input|i=s{1,}' => \@input,
-	    'debug|g'  => \$debug,
+	    'dict|d=s{1,}'   => \@dicts,
+	    'topic|t=s{1,}'  => \@topics,
+	    'input|i=s{1,}'  => \@input,
+	    'debug|g'        => \$debug,
 	);
 
 	die ($MSG{'HELP'}) if $help;
@@ -104,6 +107,10 @@ sub handle_args () {
     } else {
 	die ($MSG{'NO_DOC'});
     }
+}
+
+sub name {
+    return basename $_[0], ".txt";
 }
 
 # @description  takes a file 'foo.txt' which contains a set of words
@@ -176,7 +183,7 @@ sub doc_analysis (\$\@\@) {
 	    for (to_array $topic) {
 		$count += $$do_stats{$word} if $_ and lc $word eq lc $_;
     	    }
-	    $t_stats{$topic} += ((($count) *= 100) /= @doc_words);
+	    $t_stats{name $topic} += ((($count) *= 100) /= @doc_words);
     	}
 
       DICTS:
@@ -185,16 +192,17 @@ sub doc_analysis (\$\@\@) {
 	    for (to_array $dict) {
 		$count += $$do_stats{$word} if $_ and lc $word eq lc $_;
     	    }
-	    $di_stats{$dict} += ((($count) *= 100) /= @doc_words);
+	    $di_stats{name $dict} += ((($count) *= 100) /= @doc_words);
     	}
     }
 
     # 2. sort the results and pick the highest one
-    return ($do_stats, \%t_stats, \%di_stats);
+    return ($$do_ref, $do_stats, \%t_stats, \%di_stats);
 }
 
+
 sub show_analysis {
-    my ($do_s, $t_s, $di_s) = (shift, shift, shift);
+    my ($doc, $do_s, $t_s, $di_s) = ((name shift), shift, shift, shift);
     my %do;
 
     goto FINAL if $quiet;
@@ -219,7 +227,7 @@ sub show_analysis {
     } keys %$di_s;
 
     my $key = (sort {$$t_s{$b} <=> $$t_s{$a}} keys %$t_s)[0];
-    print "\n\t=> $key (", (sprintf "%.2f", $$t_s{$key}), "%)\n";
+    print "\n\t $doc => $key (", (sprintf "%.2f", $$t_s{$key}), "%)\n";
 }
 
 #===============================================================================
