@@ -1,7 +1,9 @@
 
-/home/arfed/Workspace/doc-class/classify.pl,195
-package classify;classify63,2038
-sub handle_args () {handle_args105,3505
-sub to_array {to_array141,4386
-sub word_freq {word_freq172,5099
-sub doc_analysis (\$\@\@) {doc_analysis189,5511
+/home/arfed/Workspace/perl/doc-class/classify.pl,262
+package classify;classify35,1332
+sub handle_args () {handle_args79,2848
+sub to_array {to_array116,3809
+sub word_freq {word_freq146,4555
+sub doc_analysis (\$\@\@) {doc_analysis162,5025
+sub name {name200,6050
+sub show_analysis {show_analysis204,6133

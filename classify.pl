@@ -109,10 +109,6 @@ sub handle_args () {
     }
 }
 
-sub name {
-    return basename $_[0], ".txt";
-}
-
 # @description  takes a file 'foo.txt' which contains a set of words
 # 		and returns it as an array
 # @param	document, a regular ASCII file
@@ -201,7 +197,12 @@ sub doc_analysis (\$\@\@) {
 }
 
 
+sub name {			# one-line function are funny..
+    return basename ($_[0], ".txt");
+}
+
 sub show_analysis {
+
     my ($doc, $do_s, $t_s, $di_s) = ((name shift), shift, shift, shift);
     my %do;
 
